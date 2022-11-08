@@ -1,0 +1,58 @@
+body {
+    background-color: #dee9ff;
+    height: 100%;
+    width: 100%;
+}
+
+.container, h1 {
+    padding: 1rem;
+}
+
+label, input {
+    height: 3rem;
+    line-height: 3rem;
+    resize: none;
+    border: 0;
+    border-radius: .25rem;
+}
+
+.col-md-4 {
+    text-align: center;
+}
+
+#p1, #p2, .dropdown-menu {
+    width: 15rem;
+}
+
+#kp, #c1, #c2 {
+    width: 38.5rem;
+}
+
+#cr, #dr {
+    width: 58.5rem;
+}
+
+.row.clearfix {
+    padding: 1rem;
+}
+
+h1 {
+    border-radius: .25rem;
+    background-color: green;
+    color: white;
+}
+
+h4 {
+    border-radius: .25rem;
+    background-color: green;
+    color: white;
+    height: 3rem;
+    line-height: 3rem;
+    margin-bottom: .5rem;
+}
+
+.btn {
+    width: 15rem;
+    height: 3rem;
+    background-color: green;
+}

@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>PHE Protocol Demo</title>
+    <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/5.1.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/static/index.css">
+    <script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
+    <script src="https://cdn.staticfile.org/twitter-bootstrap/5.1.1/js/bootstrap.bundle.min.js"></script>
+    <script src="/static/index.js"></script>
+</head>
+<body>
+<div class="container">
+    <div class="row clearfix">
+        <div class="col-md-12 column">
+            <h1 class="text-center shadow">
+                Paillier Homomorphic Encryption Protocol Demo
+            </h1>
+        </div>
+    </div>
+    <div class="row clearfix">
+        <div class="col-md-3 column">
+            <button type="button" class="btn btn-success shadow" onclick=generateKeypair()>Generate Keypair</button>
+        </div>
+        <div class="col-md-3 column">
+            <div class="dropdown">
+                <button type="button" class="btn btn-success dropdown-toggle shadow"
+                        data-bs-toggle="dropdown" id="kl">Key Length</button>
+                <ul class="dropdown-menu">
+                    <li><h5 class="dropdown-header">Key Length</h5></li>
+                    <li><a class="dropdown-item" onclick=dropDownShow('kl',this.innerHTML)>128</a></li>
+                    <li><a class="dropdown-item" onclick=dropDownShow('kl',this.innerHTML)>256</a></li>
+                    <li><a class="dropdown-item" onclick=dropDownShow('kl',this.innerHTML)>512</a></li>
+                    <li><a class="dropdown-item" onclick=dropDownShow('kl',this.innerHTML)>1024</a></li>
+                    <li><a class="dropdown-item" onclick=dropDownShow('kl',this.innerHTML)>2048</a></li>
+                    <li>
+                        <hr class="dropdown-divider">
+                    </li>
+                    <li><a class="dropdown-item" onclick=dropDownShow('kl','Key\nLength')>Clear</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-md-6 column">
+            <label class="shadow" onclick=showText('kp')>
+                <input id="kp" placeholder="Keypair" disabled>
+            </label>
+        </div>
+    </div>
+    <div class="row clearfix">
+        <div class="col-md-3 column">
+            <button type="button" class="btn btn-success shadow" onclick=encryption()>Encryption</button>
+        </div>
+        <div class="col-md-3 column">
+            <label class="shadow">
+                <input id="p1" placeholder="Plaintext 1">
+            </label>
+        </div>
+        <div class="col-md-6 column">
+            <label class="shadow" onclick=showText('c1')>
+                <input id="c1" placeholder="Ciphertext 1" disabled>
+            </label>
+        </div>
+    </div>
+    <div class="row clearfix">
+        <div class="col-md-3 column">
+            <div class="dropdown">
+                <button type="button" class="btn btn-success shadow dropdown-toggle"
+                        data-bs-toggle="dropdown" id="ptc">Protocol</button>
+                <ul class="dropdown-menu" style="height: 30rem;overflow-y: scroll;">
+                    <li><h5 class="dropdown-header">Protocol</h5></li>
+                    <li><a class="dropdown-item" onclick=dropDownShow('ptc',this.innerHTML)>SM</a></li>
+                    <li><a class="dropdown-item" onclick=dropDownShow('ptc',this.innerHTML)>SDC</a></li>
+                    <li><a class="dropdown-item" onclick=dropDownShow('ptc',this.innerHTML)>Max</a></li>
+                    <li><a class="dropdown-item" onclick=dropDownShow('ptc',this.innerHTML)>Min</a></li>
+                    <li><a class="dropdown-item" onclick=dropDownShow('ptc',this.innerHTML)>Parity</a></li>
+                    <li><a class="dropdown-item" onclick=dropDownShow('ptc',this.innerHTML)>Bit-Dec</a></li>
+                    <li><a class="dropdown-item" onclick=dropDownShow('ptc',this.innerHTML)>And</a></li>
+                    <li><a class="dropdown-item" onclick=dropDownShow('ptc',this.innerHTML)>Or</a></li>
+                    <li><a class="dropdown-item" onclick=dropDownShow('ptc',this.innerHTML)>Not</a></li>
+                    <li><a class="dropdown-item" onclick=dropDownShow('ptc',this.innerHTML)>Not-And</a></li>
+                    <li><a class="dropdown-item" onclick=dropDownShow('ptc',this.innerHTML)>Equal</a></li>
+                    <li><a class="dropdown-item" onclick=dropDownShow('ptc',this.innerHTML)>Not-Equal</a></li>
+                    <li><a class="dropdown-item" onclick=dropDownShow('ptc',this.innerHTML)>Greater-Than</a></li>
+                    <li><a class="dropdown-item" onclick=dropDownShow('ptc',this.innerHTML)>Greater-Equal</a></li>
+                    <li><a class="dropdown-item" onclick=dropDownShow('ptc',this.innerHTML)>Less-Than</a></li>
+                    <li><a class="dropdown-item" onclick=dropDownShow('ptc',this.innerHTML)>Less-Equal</a></li>
+                    <li>
+                        <hr class="dropdown-divider">
+                    </li>
+                    <li><a class="dropdown-item" onclick=dropDownShow('ptc','Protocol')>Clear</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-md-3 column">
+            <label class="shadow">
+                <input id="p2" placeholder="Plaintext 2">
+            </label>
+        </div>
+        <div class="col-md-6 column">
+            <label class="shadow" onclick=showText('c2')>
+                <input id="c2" placeholder="Ciphertext 2" disabled>
+            </label>
+        </div>
+    </div>
+    <div class="row clearfix">
+        <div class="col-md-3 column">
+            <button type="button" class="btn btn-success shadow" onclick=calculation()>Calculation</button>
+        </div>
+        <div class="col-md-9 column">
+            <label class="shadow" onclick=showText('cr')>
+                <input id="cr" placeholder="Ciphertext Result" disabled>
+            </label>
+        </div>
+    </div>
+    <div class="row clearfix">
+        <div class="col-md-3 column">
+            <button type="button" class="btn btn-success shadow" onclick=decryption()>Result Decryption</button>
+        </div>
+        <div class="col-md-9 column">
+            <label class="shadow">
+                <input id="dr" placeholder="Decryption Result" disabled>
+            </label>
+        </div>
+    </div>
+    <div class="row clearfix">
+        <div class="col-md-12 column">
+            <h4 class="text-center shadow">Encryption Number</h4>
+            <textarea id="show" class="shadow"
+                      style="width: 78.5rem;height: 17rem;resize: none;background-color: white;color: black"
+                      placeholder="Click on ciphertext to show"
+                      disabled></textarea>
+        </div>
+    </div>
+</div>
+</body>
+</html>
