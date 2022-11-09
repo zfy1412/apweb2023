@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://cdn.staticfile.org/twitter-bootstrap/5.1.1/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://cdn.staticfile.org/twitter-bootstrap/5.1.1/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
+  <title><!--TODO: 修改网页标题-->Page2</title>
+  <style>
+    body {
+      background-color: #dee9ff;
+      height: 100%;
+      width: 100%;
+    } 
+  </style>
+</head>
+<body>
+  <main>
+    <h1 class="display-3 py-4 text-center text-white" style="background-color:green;"><!--TODO: 修改标题-->zfy</h1>
+    <div class="container-fluid">
+      <div class="row mt-5">
+
+        <div class="col-3 text-center mx-auto bg-white bg-opacity-25 rounded-3 shadow-lg">
+
+          <div class="my-3 bg-white bg-opacity-50">
+            <h1 class="display-4">Advanced Protocal</h1>
+            <div class="p-4 ">
+              <div id="advanced" class="list-group list-group-flush bg-white bg-opacity-50 rounded-3 border-0">
+                <a href="#" id="SSPLD" class="list-group-item list-group-item-action"><h2 class="display-6 text-secondary">SSPLD</h2></a>
+                <a href="#" id="SSED" class="list-group-item list-group-item-action"><h2 class="display-6 text-secondary">SSED</h2></a>
+                <a href="#" id="SGD" class="list-group-item list-group-item-action"><h2 class="display-6 text-secondary">SGD</h2></a>
+                <a href="#" id="SSD" class="list-group-item list-group-item-action"><h2 class="display-6 text-secondary">SSD</h2></a>
+                <a href="#" id="SD" class="list-group-item list-group-item-action"><h2 class="display-6 text-secondary">SD</h2></a>
+              </div>
+            </div>
+            
+          </div>
+
+          <div class="my-3 bg-white bg-opacity-50">
+            <h1 class="display-4">Basic Protocal</h1>
+            <div class="p-4"> 
+
+              <div class="dropdown dropend">
+                <a href="#" class="list-group-item list-group-item-action dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false"><h2 class="display-6 text-secondary">MENU</h2></a>
+                <ul id="basic" class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                  <li><a id="SP"  class="dropdown-item" href="#"><h4>SP<h4></a></li>
+                  <li><a id="SEQ"  class="dropdown-item" href="#"><h4>SEQ<h4></a></li>
+                  <li><a id="SLESS" class="dropdown-item" href="#"><h4>SLESS<h4></a></li>
+                  <li><a id="SM" class="dropdown-item" href="#"><h4>SM<h4></a></li>
+                  <li><a id="SMIN" class="dropdown-item" href="#"><h4>SMIN<h4></a></li>
+                  <li><a id="SNOT" class="dropdown-item" href="#"><h4>SNOT<h4></a></li>
+                  <li><a id="SBD" class="dropdown-item" href="#"><h4>SBD<h4></a></li>
+                  <li><a id="SOR" class="dropdown-item" href="#"><h4>SOR<h4></a></li>
+                  <li><a id="SAND" class="dropdown-item" href="#"><h4>SAND<h4></a></li>
+                  <li><a id="SNE" class="dropdown-item" href="#"><h4>SNE<h4></a></li>
+                  <li><a id="SLEQ" class="dropdown-item" href="#"><h4>SLEQ<h4></a></li>
+                  <li><a id="SDC" class="dropdown-item" href="#"><h4>SDC<h4></a></li>
+                  <li><a id="SMAX" class="dropdown-item" href="#"><h4>SMAX<h4></a></li>
+                  <li><a id="SNAND" class="dropdown-item" href="#"><h4>SNAND<h4></a></li>
+                  <li><a id="SGE" class="dropdown-item" href="#"><h4>SGE<h4></a></li>
+                  <li><a id="SG" class="dropdown-item" href="#"><h4>SG<h4></a></li>
+                </ul>
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+
+        <div class=" col-8 m-auto bg-white bg-opacity-25 rounded-3 shadow-lg" style="height: 100%;">
+          <div class="mt-5 mx-4 mb-5">
+            <img  src="../static/resource/fig1.svg" height="100%" width="100%" alt="..." >
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </main>
+  <script>
+    $(document).ready(function () {
+      $('#advanced').children("a").click(function(){
+        let s ='../static/resource/'+$(this).text()+'.jpg'//改成svg
+        console.log(s)
+        $("img").attr("src",s)
+        
+      })
+
+      $('#basic').children("li").children("a").click(function(){
+        let s ='../static/resource/'+$(this).text()+'.jpg'//改成svg
+        console.log(s)
+        $("img").attr("src",s)
+        
+      })
+
+    })
+  </script>
+</body>
+</html>
