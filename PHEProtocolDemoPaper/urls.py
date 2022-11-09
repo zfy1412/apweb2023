@@ -26,6 +26,6 @@ urlpatterns = [
     re_path(r'^enc$', views.encryption),
     re_path(r'^gk$', views.generate_keypair),
     re_path(r'^$', views.realindex),
-    re_path('index/', views.index),
+    re_path('index/', views.indx),
     re_path('example/', views.example),
 ]
