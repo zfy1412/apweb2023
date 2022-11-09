@@ -17,7 +17,7 @@ def realindex(request):
     return render(request, "realindex.html")
 
 @csrf_exempt
-def indx(request):
+def index(request):
     return render(request, "index.html")
 
 @csrf_exempt
