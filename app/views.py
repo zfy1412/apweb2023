@@ -13,9 +13,16 @@ CR = ''
 
 
 @csrf_exempt
+def realindex(request):
+    return render(request, "realindex.html")
+
+@csrf_exempt
 def index(request):
     return render(request, "index.html")
 
+@csrf_exempt
+def example(request):
+    return render(request, "example.html")
 
 @csrf_exempt
 def generate_keypair(request):
