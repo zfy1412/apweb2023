@@ -25,6 +25,10 @@ def example(request):
     return render(request, "example.html")
 
 @csrf_exempt
+def views(request):
+    return render(request, "views.html")
+
+@csrf_exempt
 def generate_keypair(request):
     return JsonResponse({'kp': gk(int(request.POST.get("kl")))})
 
