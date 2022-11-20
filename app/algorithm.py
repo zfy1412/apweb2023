@@ -1,30 +1,40 @@
-import math
-import numpy as np
 
-def line(p, a, b):
-    a, b, p = np.array(a), np.array(b), np.array(p)	 # trans to np.array
-    d = np.divide(b - a, np.linalg.norm(b - a))	# normalized tangent vector
-    s = np.dot(a - p, d)	# signed parallel distance components
-    t = np.dot(p - b, d)
-    h = np.maximum.reduce([s, t, 0])	# clamped parallel distance
-    c = np.cross(p - a, d)  # perpendicular distance component
-    return np.hypot(h, np.linalg.norm(c))
-def ptp(a,b):
-    return math.sqrt((a[0]-b[0])*(a[0]-b[0])+(a[1]-b[1])*(a[1]-b[1]))
-def minxy(index):
-    x=10000000000
-    y=10000000000
+import numpy as np
+import pandas as pd
+import phe
+
+import keypair
+import protocol as phe_protocol
+import sspld
+
+
+def SSD(p0,p1):
+    return  phe_protocol.PHEProtocol(p0[0] - p1[0]).phe_pow() + phe_protocol.PHEProtocol(p0[1] - p1[1]).phe_pow()
+def sminxy(pk,index):
+    x=pk.encrypt(10000000000)
+    y= pk.encrypt(10000000000)
     for p in index:
-        x=min(p[0],x)
-        y=min(p[1],y)
+        x=phe_protocol.PHEProtocol(p[0]).phe_min(x)
+        y=phe_protocol.PHEProtocol(p[1]).phe_min(y)
     return [x,y]
-def maxxy(index):
-    x=-10000000000
-    y=-10000000000
+def smaxxy(pk,index):
+    x = pk.encrypt(-10000000000)
+    y = pk.encrypt(-10000000000)
     for p in index:
-        x=max(p[0],x)
-        y=max(p[1],y)
+        x = phe_protocol.PHEProtocol(p[0]).phe_max(x)
+        y = phe_protocol.PHEProtocol(p[1]).phe_max(y)
     return [x,y]
+def enpoint(pk):
+    point = [[96, 94], [164, 64], [67, 150], [104, 190], [190, 209], [221, 233], [230, 307], [200, 290], [413, 47],
+             [380, 95], [566, 30], [676, 58], [786, 104], [750, 50], [437, 324], [543, 267], [470, 454], [399, 389],
+             [827, 394], [753, 448], [786, 583], [826, 513], [957, 676], [926, 533], [891, 785], [757, 770], [962, 814],
+             [981, 773], [595, 983], [677, 853], [542, 892], [476, 835], [282, 895], [400, 950], [185, 9], [220, 39],
+             [65, 570], [100, 620], [180, 581], [200, 600], [70, 521], [88, 550], [66, 380], [160, 420], [500, 508],
+             [552, 562], [806, 812], [861, 909], ]
+    enoint=[]
+    for p in point:
+        enoint.append([pk.encrypt(p[0]),pk.encrypt(p[1])])
+    return enoint
 
 class BinaryTree:
     '''定义一个树'''
@@ -35,13 +45,14 @@ class BinaryTree:
         self.mid = None
         self.right = None
         self.index = []
+        self.child = []
         self.minxy = []
         self.maxxy = []
 
 
     '''前序遍历建树'''
 
-    def bulidTree(self, arrs,p):
+    def bulidTree(self, arrs,p,pk):
         if not len(arrs):
             return None
         if arrs[0]=='null':
@@ -53,9 +64,11 @@ class BinaryTree:
             arrs.pop(0)
             zindex = int(arrs[0])
             self.index.append(p[zindex])
+            self.child.append(zindex)
             arrs.pop(0)
             zindex = int(arrs[0])
             self.index.append(p[zindex])
+            self.child.append(zindex)
             arrs.pop(0)
             return
         else:
@@ -64,14 +77,14 @@ class BinaryTree:
             self.left = BinaryTree()
             self.mid = BinaryTree()
             self.right = BinaryTree()
-            self.left.bulidTree(arrs,p)
+            self.left.bulidTree(arrs,p,pk)
             self.index.extend(self.left.index)
-            self.mid.bulidTree(arrs,p)
+            self.mid.bulidTree(arrs,p,pk)
             self.index.extend(self.mid.index)
-            self.right.bulidTree(arrs,p)
+            self.right.bulidTree(arrs,p,pk)
             self.index.extend(self.right.index)
-            self.minxy=minxy(self.index).copy()
-            self.maxxy=maxxy(self.index).copy()
+            self.minxy=sminxy(pk,self.index).copy()
+            self.maxxy=smaxxy(pk,self.index).copy()
 
 
 
@@ -125,65 +138,100 @@ class BinaryTree:
     def isinrect(self,point):
         if self.val==None or self.val=='null':
             return -1
-        elif self.minxy[0] <= point[0] <= self.maxxy[0] and self.minxy[1] <= point[1] <= self.maxxy[1]:
+        elif phe_protocol.PHEProtocol(point[0]).pin_boolmore(self.minxy[0]) and phe_protocol.PHEProtocol(self.maxxy[0]).pin_boolmore(point[0]) and phe_protocol.PHEProtocol(point[1]).pin_boolmore(self.minxy[1]) and phe_protocol.PHEProtocol(self.maxxy[1]).pin_boolmore(point[1]):
             return 1
         else:
             return 0
-    def mindist(self,point):
+    def mindist(self,point,pk):
+        private_key = pd.read_pickle(keypair.PRIVATE_KEY_PATH)
+        sk = phe.PaillierPrivateKey(p=int(private_key.loc['p'][0]),
+                                    public_key=pk, q=int(private_key.loc['q'][0]))
         if self.isinrect(point)==1:
-            return 0
+            return pk.encrypt(0)
         elif self.isinrect(point)==-1:
-            return 100000000
+            return pk.encrypt(10000)
         else:
-            min1 = line(point,[self.minxy[0],self.minxy[1]],[self.maxxy[0], self.minxy[1]])
-            min2 = line(point,[self.minxy[0],self.minxy[1]],[self.minxy[0], self.maxxy[1]])
-            min3 = line(point, [self.maxxy[0], self.maxxy[1]],[self.maxxy[0], self.minxy[1]])
-            min4 = line(point, [self.maxxy[0], self.maxxy[1]],[self.minxy[0], self.maxxy[1]])
-            min5 = ptp(point,[self.minxy[0],self.minxy[1]])
-            min6 = ptp(point, [self.minxy[0], self.maxxy[1]])
-            min7 = ptp(point, [self.maxxy[0], self.minxy[1]])
-            min8 = ptp(point, [self.maxxy[0], self.maxxy[1]])
-            return min(min1,min2,min3,min4,min5,min6,min7,min8)
-    def minmaxdist(self,point):
-        min1 = line(point, [self.minxy[0], self.minxy[1]], [self.maxxy[0], self.minxy[1]])
-        min2 = line(point, [self.minxy[0], self.minxy[1]], [self.minxy[0], self.maxxy[1]])
-        min3 = line(point, [self.maxxy[0], self.maxxy[1]], [self.maxxy[0], self.minxy[1]])
-        min4 = line(point, [self.maxxy[0], self.maxxy[1]], [self.minxy[0], self.maxxy[1]])
-        minn=min(min1,min2,min3,min4)
-        if min1==minn:
-            return max(ptp(point,[self.minxy[0], self.minxy[1]]),ptp(point,[self.maxxy[0], self.minxy[1]]))
-        elif min2==minn:
-            return max(ptp(point, [self.minxy[0], self.minxy[1]]), ptp(point, [self.minxy[0], self.maxxy[1]]))
-        elif min3==minn:
-            return max(ptp(point, [self.maxxy[0], self.maxxy[1]]), ptp(point, [self.maxxy[0], self.minxy[1]]))
-        elif min4==minn:
-            return max(ptp(point, [self.maxxy[0], self.maxxy[1]]), ptp(point, [self.minxy[0], self.maxxy[1]]))
+            min1 = sspld.phe_sspld(pk,point,[self.minxy[0],self.minxy[1]],[self.maxxy[0], self.minxy[1]])
+            min2 = sspld.phe_sspld(pk,point,[self.minxy[0],self.minxy[1]],[self.minxy[0], self.maxxy[1]])
+            min3 = sspld.phe_sspld(pk,point, [self.maxxy[0], self.maxxy[1]],[self.maxxy[0], self.minxy[1]])
+            min4 = sspld.phe_sspld(pk,point, [self.maxxy[0], self.maxxy[1]],[self.minxy[0], self.maxxy[1]])
+            min5 = SSD(point,[self.minxy[0],self.minxy[1]])
+            min6 = SSD(point, [self.minxy[0], self.maxxy[1]])
+            min7 = SSD(point, [self.maxxy[0], self.minxy[1]])
+            min8 = SSD(point, [self.maxxy[0], self.maxxy[1]])
+            return phe_protocol.PHEProtocol(phe_protocol.PHEProtocol(phe_protocol.PHEProtocol(phe_protocol.PHEProtocol(phe_protocol.PHEProtocol(phe_protocol.PHEProtocol(phe_protocol.PHEProtocol(min1).phe_min(min2)).phe_min(min3)).phe_min(min4)).phe_min(min5)).phe_min(min6)).phe_min(min7)).phe_min(min8)
+    def minmaxdist(self,point,pk):
+        private_key = pd.read_pickle(keypair.PRIVATE_KEY_PATH)
+        sk = phe.PaillierPrivateKey(p=int(private_key.loc['p'][0]),
+                                    public_key=pk, q=int(private_key.loc['q'][0]))
+        min1 = sspld.phe_sspld(pk,point, [self.minxy[0], self.minxy[1]], [self.maxxy[0], self.minxy[1]])
+        min2 = sspld.phe_sspld(pk,point, [self.minxy[0], self.minxy[1]], [self.minxy[0], self.maxxy[1]])
+        min3 = sspld.phe_sspld(pk,point, [self.maxxy[0], self.maxxy[1]], [self.maxxy[0], self.minxy[1]])
+        min4 = sspld.phe_sspld(pk,point, [self.maxxy[0], self.maxxy[1]], [self.minxy[0], self.maxxy[1]])
+        if phe_protocol.PHEProtocol(min2).pin_boolmore(min1) and phe_protocol.PHEProtocol(min3).pin_boolmore(min1)and phe_protocol.PHEProtocol(min4).pin_boolmore(min1):
+            return phe_protocol.PHEProtocol(SSD(point,[self.minxy[0], self.minxy[1]])).phe_max(SSD(point,[self.maxxy[0], self.minxy[1]]))
+        elif phe_protocol.PHEProtocol(min1).pin_boolmore(min2) and phe_protocol.PHEProtocol(min3).pin_boolmore(min2) and phe_protocol.PHEProtocol(min4).pin_boolmore(min2):
+            return phe_protocol.PHEProtocol(SSD(point, [self.minxy[0], self.minxy[1]])).phe_max(SSD(point, [self.minxy[0], self.maxxy[1]]))
+        elif phe_protocol.PHEProtocol(min1).pin_boolmore(min3) and phe_protocol.PHEProtocol(min2).pin_boolmore(min3) and  phe_protocol.PHEProtocol(min4).pin_boolmore(min3):
+            return phe_protocol.PHEProtocol(SSD(point, [self.maxxy[0], self.maxxy[1]])).phe_max(SSD(point, [self.maxxy[0], self.minxy[1]]))
+        elif phe_protocol.PHEProtocol(min1).pin_boolmore(min4) and phe_protocol.PHEProtocol(min2).pin_boolmore(min4) and phe_protocol.PHEProtocol(min3).pin_boolmore(min4):
+            return phe_protocol.PHEProtocol(SSD(point, [self.maxxy[0], self.maxxy[1]])).phe_max(SSD(point, [self.minxy[0], self.maxxy[1]]))
 
-    def knn(self,qx, qy, k):
-        qpoint = [qx, qy]
+    def knn(self,qx, qy, k,pk,sk):
+
+
+
+
+        ans=[]
+        anspoint={}
+        qpoint = [pk.encrypt(qx), pk.encrypt(qy)]
         qunne = [self]
-        mindistv = 1000000
-        minmaxdistv = 1000000
-        dist = 100000
+        mindistv =pk.encrypt(1000000)
+        minmaxdistv = pk.encrypt(1000000)
+        dist = pk.encrypt(1000000)
+
         while len(qunne) != 0:
             node = qunne.pop(0)
-            print(node.val)
+
+            if node.left.val == '*':
+                ans.append(node.val)
+                ans.append(node.left.child)
+            else:
+                ans.append(node.val)
             if node.left.val=='*':
-                dist=min(ptp(qpoint,node.left.index[0]),ptp(qpoint,node.left.index[1]),dist)
+                if len(anspoint)<k:
+                    dist =phe_protocol.PHEProtocol(phe_protocol.PHEProtocol(SSD(qpoint, node.left.index[0])).phe_min(SSD(qpoint, node.left.index[1]))).phe_min(dist)
+                    anspoint[node.left.child[0]]=SSD(qpoint, node.left.index[0])
+                    anspoint[node.left.child[1]] = SSD(qpoint, node.left.index[1])
+                elif phe_protocol.PHEProtocol(dist).pin_boolmore(phe_protocol.PHEProtocol(SSD(qpoint,node.left.index[0])).phe_min(SSD(qpoint,node.left.index[1]))):
+                    dist = phe_protocol.PHEProtocol(SSD(qpoint,node.left.index[0])).phe_min(SSD(qpoint,node.left.index[1]))
+                    anspoint[node.left.child[0]] = SSD(qpoint, node.left.index[0])
+                    anspoint[node.left.child[1]] = SSD(qpoint, node.left.index[1])
+
                 continue
-            if node.left.mindist(qpoint) <= minmaxdistv and node.left is not None and node.left.val !='null' and node.left.val !=None and node.left.mindist(qpoint)<dist:
+            if phe_protocol.PHEProtocol(minmaxdistv).pin_boolmore(node.left.mindist(qpoint,pk))  and node.left is not None and node.left.val !='null' and node.left.val !=None and phe_protocol.PHEProtocol(dist).pin_boolmore(node.left.mindist(qpoint,pk)):
                 qunne.append(node.left)
-                mindistv=min(node.left.mindist(qpoint),mindistv)
-                minmaxdistv=min(node.left.minmaxdist(qpoint),minmaxdistv)
-            if node.mid.mindist(qpoint) <= minmaxdistv and node.mid is not None and node.mid.val != 'null' and node.mid.val != None and node.mid.mindist(qpoint)<dist:
+                print(node.left.val)
+                print(sk.decrypt(minmaxdistv))
+                print(sk.decrypt(node.left.mindist(qpoint,pk)))
+                mindistv=phe_protocol.PHEProtocol(node.left.mindist(qpoint,pk)).phe_min(mindistv)
+                minmaxdistv=phe_protocol.PHEProtocol(node.left.minmaxdist(qpoint,pk)).phe_min(minmaxdistv)
+            if phe_protocol.PHEProtocol(minmaxdistv).pin_boolmore(node.mid.mindist(qpoint,pk))  and node.mid is not None and node.mid.val !='null' and node.mid.val !=None and phe_protocol.PHEProtocol(dist).pin_boolmore(node.mid.mindist(qpoint,pk)):
                 qunne.append(node.mid)
-                mindistv = min(node.mid.mindist(qpoint), mindistv)
-                minmaxdistv = min(node.mid.minmaxdist(qpoint), minmaxdistv)
-            if node.right.mindist(qpoint) <= minmaxdistv and node.right is not None and node.right.val != 'null' and node.right.val != None  and node.right.mindist(qpoint)<dist :
+                print(node.mid.val)
+                print(sk.decrypt(minmaxdistv))
+                print(sk.decrypt(node.mid.mindist(qpoint, pk)))
+                mindistv=phe_protocol.PHEProtocol(node.mid.mindist(qpoint,pk)).phe_min(mindistv)
+                minmaxdistv=phe_protocol.PHEProtocol(node.mid.minmaxdist(qpoint,pk)).phe_min(minmaxdistv)
+            if phe_protocol.PHEProtocol(minmaxdistv).pin_boolmore(node.right.mindist(qpoint,pk))  and node.right is not None and node.right.val !='null' and node.right.val !=None and phe_protocol.PHEProtocol(dist).pin_boolmore(node.right.mindist(qpoint,pk)):
                 qunne.append(node.right)
-                mindistv = min(node.right.mindist(qpoint), mindistv)
-                minmaxdistv = min(node.right.minmaxdist(qpoint), minmaxdistv)
-        print(dist)
+                print(node.right.val)
+                print(sk.decrypt(minmaxdistv))
+                print(sk.decrypt(node.right.mindist(qpoint, pk)))
+                mindistv=phe_protocol.PHEProtocol(node.right.mindist(qpoint,pk)).phe_min(mindistv)
+                minmaxdistv=phe_protocol.PHEProtocol(node.right.minmaxdist(qpoint,pk)).phe_min(minmaxdistv)
+        print(anspoint)
+        return ans
 
 
 
@@ -201,18 +249,33 @@ class BinaryTree:
 #         if mindist
 
 
-if __name__ == '__main__':
+def sknn(qx, qy, k,length):
+    arr = [' root ', ' R0 ', ' R3 ', ' R6 ', '*', '14', '15', 'null', 'null', ' R7 ', '*', '16', '17', 'null',
+           'null', ' R8 ', '*', '44', '45', 'null', 'null', ' R4 ', ' R12 ', '*', '8', '9', 'null', 'null', ' R13 ',
+           '*', '10', '11', 'null', 'null', ' R14 ', '*', '12', '13', 'null', 'null', ' R5 ', ' R9 ', '*', '18',
+           '19', 'null', 'null', ' R10 ', '*', '20', '21', 'null', 'null', ' R11 ', '*', '22', '23', 'null', 'null',
+           ' R1 ', ' R27 ', ' R30 ', '*', '32', '33', 'null', 'null', ' R31 ', '*', '30', '31', 'null', 'null',
+           ' R32 ', '*', '28', '29', 'null', 'null', ' R28 ', ' R33 ', '*', '46', '47', 'null', 'null', ' R34 ',
+           '*', '24', '25', 'null', 'null', ' R35 ', '*', '26', '27', 'null', 'null', 'null', ' R2 ', ' R15 ',
+           ' R18 ', '*', '2', '3', 'null', 'null', ' R19 ', '*', '0', '1', 'null', 'null', ' R20 ', '*', '34', '35',
+           'null', 'null', ' R16 ', ' R21 ', '*', '42', '43', 'null', 'null', ' R22 ', '*', '4', '5', 'null',
+           'null', ' R23 ', '*', '6', '7', 'null', 'null', ' R17 ', ' R24 ', '*', '36', '37', 'null', 'null',
+           ' R25 ', '*', '41', '40', 'null', 'null', ' R26 ', '*', '38', '39', 'null', 'null']
+    keypair.generate_keypair(length)
+    pk = phe.PaillierPublicKey(n=int(pd.read_pickle(keypair.PUBLIC_KEY_PATH).loc['n'][0]))
+    private_key = pd.read_pickle(keypair.PRIVATE_KEY_PATH)
+    sk = phe.PaillierPrivateKey(p=int(private_key.loc['p'][0]),
+                                public_key=pk, q=int(private_key.loc['q'][0]))
     a = BinaryTree()
-    point = [[96, 94], [164, 64], [67, 150], [104, 190], [190, 209], [221, 233], [230, 307], [200, 290], [413, 47],
-             [380, 95], [566, 30], [676, 58], [786, 104], [750, 50], [437, 324], [543, 267], [470, 454], [399, 389],
-             [827, 394], [753, 448], [786, 583], [826, 513], [957, 676], [926, 533], [891, 785], [757, 770], [962, 814],
-             [981, 773], [595, 983], [677, 853], [542, 892], [476, 835], [282, 895], [400, 950], [185, 9], [220, 39],
-             [65, 570], [100, 620], [180, 581], [200, 600], [70, 521], [88, 550], [66, 380], [160, 420], [500, 508],
-             [552, 562], [806, 812], [861, 909], ]
-    arrs = ['root','R0', 'R1', 'R2','R3', 'R4','R5', 'R27','R28','null', 'R15', 'R16','R17','R6', 'R7','R8','R12', 'R13','R14','R9', 'R10','R11','R30', 'R31','R32','R33', 'R34','R35','null','null','null','R18', 'R19','R20','R21', 'R22','R23','R24', 'R25','R26']
-  #  a.levelBulidTree(arrs)
-    arr =[' root ',' R0 ',' R3 ',' R6 ','*','14','15','null','null',' R7 ','*','16','17','null','null',' R8 ','*','44','45','null','null',' R4 ',' R12 ','*','8','9','null','null',' R13 ','*','10','11','null','null',' R14 ','*','12','13','null','null',' R5 ',' R9 ','*','18','19','null','null',' R10 ','*','20','21','null','null',' R11 ','*','22','23','null','null',' R1 ',' R27 ',' R30 ','*','32','33','null','null',' R31 ','*','30','31','null','null',' R32 ','*','28','29','null','null',' R28 ',' R33 ','*','46','47','null','null',' R34 ','*','24','25','null','null',' R35 ','*','26','27','null','null','null',' R2 ',' R15 ',' R18 ','*','2','3','null','null',' R19 ','*','0','1','null','null',' R20 ','*','34','35','null','null',' R16 ',' R21 ','*','42','43','null','null',' R22 ','*','4','5','null','null',' R23 ','*','6','7','null','null',' R17 ',' R24 ','*','36','37','null','null',' R25 ','*','41','40','null','null',' R26 ','*','38','39','null','null']
-    a.bulidTree(arr,point)
-    a.knn(600,200,1)
+    point = enpoint(pk)
+    a.bulidTree(arr, point,pk)
+    print(a.knn(qx, qy, k,pk,sk))
+
     a.preTravel()
+
+
+if __name__ == '__main__':
+    sknn(600,200,4,128)
+
+
 
