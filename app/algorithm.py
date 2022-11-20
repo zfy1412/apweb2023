@@ -18,6 +18,7 @@ def lastans(ans,k):
     for i in a:
         if cnt<k:
             b.append(i)
+            cnt=cnt+1
     return b
 
 
@@ -249,7 +250,7 @@ def sknn(qx, qy, k,length):
 
 
 if __name__ == '__main__':
-    print(sknn(600,200,8,128))
+    print(sknn(600,200,3,128))
 
 
 
