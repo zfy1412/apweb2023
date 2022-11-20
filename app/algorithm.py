@@ -99,7 +99,6 @@ class BinaryTree:
 
 
     def levelBulidTree(self, arrs):
-        # 递归建树
         def add(self, val):
             queue = [self]
             while len(queue):
