@@ -10,8 +10,8 @@ import pandas as pd
 import phe
 
 # the files of the key pair
-PUBLIC_KEY_PATH = "encryption/keypair/public.key"
-PRIVATE_KEY_PATH = "encryption/keypair/private.key"
+PUBLIC_KEY_PATH = "./app/encryption/keypair/public.key"
+PRIVATE_KEY_PATH = "./app/encryption/keypair/private.key"
 
 
 def generate_keypair(length):
