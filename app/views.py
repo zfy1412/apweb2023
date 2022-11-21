@@ -5,6 +5,7 @@ from django.http import JsonResponse
 from django.shortcuts import render
 from django.views.decorators.csrf import csrf_exempt
 from smpcp import CloudPlatform, CloudPlatformThird, SecureMultiPartyComputationProtocol
+from app import algorithm
 
 from app.src.keypair import generate_keypair as gk
 from app.src.path import PK_PATH, SK_PATH
@@ -27,6 +28,21 @@ def example(request):
 @csrf_exempt
 def views(request):
     return render(request, "views.html")
+
+@csrf_exempt
+def knn(request):
+    qx=request.POST.get('qx')
+    qy=request.POST.get('qy')
+    k=request.POST.get('k')
+    length=request.POST.get('length')
+
+    b,ans=algorithm.sknn(qx,qy,k,length)
+
+    return JsonResponse({
+        'b':b,
+        'ans':ans
+    })
+    
 
 @csrf_exempt
 def generate_keypair(request):
