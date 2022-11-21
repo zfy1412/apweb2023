@@ -8,8 +8,8 @@ import random
 
 import pandas as pd
 import phe
-import keypair
-from keypair import PUBLIC_KEY_PATH, PRIVATE_KEY_PATH
+import newkeypair
+from newkeypair import PUBLIC_KEY_PATH, PRIVATE_KEY_PATH
 
 
 class PHEProtocol(object):
@@ -223,8 +223,8 @@ class PHEThirdProtocol(object):
         """
         return self.sk.decrypt(h) < 0
 if __name__ == '__main__':
-    pk = phe.PaillierPublicKey(n=int(pd.read_pickle(keypair.PUBLIC_KEY_PATH).loc['n'][0]))
-    private_key = pd.read_pickle(keypair.PRIVATE_KEY_PATH)
+    pk = phe.PaillierPublicKey(n=int(pd.read_pickle(newkeypair.PUBLIC_KEY_PATH).loc['n'][0]))
+    private_key = pd.read_pickle(newkeypair.PRIVATE_KEY_PATH)
     sk = phe.PaillierPrivateKey(p=int(private_key.loc['p'][0]),
                                 public_key=pk, q=int(private_key.loc['q'][0]))
     a=pk.encrypt(25)

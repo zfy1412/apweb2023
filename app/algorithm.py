@@ -5,7 +5,7 @@ import pandas as pd
 import phe
 import time
 from functools import cmp_to_key
-import keypair
+import newkeypair
 import protocol as phe_protocol
 import sspld
 
@@ -240,8 +240,8 @@ def sknn(qx, qy, k,length):
            'null', 'null', ' R16 ', ' R21 ', '*', '42', '43', 'null', 'null', ' R22 ', '*', '4', '5', 'null',
            'null', ' R23 ', '*', '6', '7', 'null', 'null', ' R17 ', ' R24 ', '*', '36', '37', 'null', 'null',
            ' R25 ', '*', '41', '40', 'null', 'null', ' R26 ', '*', '38', '39', 'null', 'null']
-    keypair.generate_keypair(length)
-    pk = phe.PaillierPublicKey(n=int(pd.read_pickle(keypair.PUBLIC_KEY_PATH).loc['n'][0]))
+    newkeypair.generate_keypair(length)
+    pk = phe.PaillierPublicKey(n=int(pd.read_pickle(newkeypair.PUBLIC_KEY_PATH).loc['n'][0]))
     a = BinaryTree()
     point = enpoint(pk)
     a.bulidTree(arr, point,pk)

@@ -10,7 +10,7 @@ import time
 import pandas as pd
 import phe
 
-import keypair
+import newkeypair
 import protocol as phe_protocol
 
 
@@ -58,7 +58,7 @@ def phe_third_sspld(alpha, beta, pk):
     :param pk: PHE public key
     :return: an encrypted sequence theta
     """
-    private_key = pd.read_pickle(keypair.PRIVATE_KEY_PATH)
+    private_key = pd.read_pickle(newkeypair.PRIVATE_KEY_PATH)
     sk = phe.PaillierPrivateKey(p=int(private_key.loc['p'][0]),
                                 public_key=pk, q=int(private_key.loc['q'][0]))
 
@@ -75,9 +75,9 @@ def phe_third_sspld(alpha, beta, pk):
 if __name__ == '__main__':
 
 
-    pk = phe.PaillierPublicKey(n=int(pd.read_pickle(keypair.PUBLIC_KEY_PATH).loc['n'][0]))
+    pk = phe.PaillierPublicKey(n=int(pd.read_pickle(newkeypair.PUBLIC_KEY_PATH).loc['n'][0]))
 
-    private_key = pd.read_pickle(keypair.PRIVATE_KEY_PATH)
+    private_key = pd.read_pickle(newkeypair.PRIVATE_KEY_PATH)
     sk = phe.PaillierPrivateKey(p=int(private_key.loc['p'][0]),
                                 public_key=pk, q=int(private_key.loc['q'][0]))
 
