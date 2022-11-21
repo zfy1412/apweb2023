@@ -1,6 +1,7 @@
 # Create your views here.
 import pandas as pd
 import phe
+import json
 from django.http import JsonResponse
 from django.shortcuts import render
 from django.views.decorators.csrf import csrf_exempt
@@ -31,16 +32,21 @@ def views(request):
 
 @csrf_exempt
 def knn(request):
-    qx=request.POST.get('qx')
-    qy=request.POST.get('qy')
-    k=request.POST.get('k')
-    length=request.POST.get('length')
+    print('11111111111111111111111')
+    qx=int(request.POST.get('qx'))
+    qy=int(request.POST.get('qy'))
+    k=int(request.POST.get('k'))
+    length=int(request.POST.get('length'))
 
     b,ans=algorithm.sknn(qx,qy,k,length)
 
+    res=json.dumps({
+        'answer':b,
+        'answerpoint':ans
+    })
+
     return JsonResponse({
-        'b':b,
-        'ans':ans
+        'answerstr':res
     })
     
 
