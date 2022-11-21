@@ -32,7 +32,6 @@ def views(request):
 
 @csrf_exempt
 def knn(request):
-    print('11111111111111111111111')
     qx=int(request.POST.get('qx'))
     qy=int(request.POST.get('qy'))
     k=int(request.POST.get('k'))
