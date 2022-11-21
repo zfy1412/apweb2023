@@ -8,7 +8,6 @@ import sys
 
 import pandas as pd
 import phe
-from colorama import Fore, Style
 
 # the files of the key pair
 PUBLIC_KEY_PATH = "encryption/keypair/public.key"
