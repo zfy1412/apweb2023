@@ -179,7 +179,8 @@ class BinaryTree:
             return phe_protocol.PHEProtocol(SSD(point, [self.maxxy[0], self.maxxy[1]])).phe_max(SSD(point, [self.minxy[0], self.maxxy[1]]))
 
     def knn(self,qx, qy, k,pk):
-        ans={}
+        cnt = 0
+        ans=[]
         anspoint={}
         qpoint = [pk.encrypt(qx), pk.encrypt(qy)]
         qunne = [self]
@@ -191,8 +192,9 @@ class BinaryTree:
         while len(qunne) != 0:
             start=time.time()
             node = qunne.pop(0)
-            ans[node.val] = []
-
+            apoint={}
+            apoint["val1"] =node.val
+            temp = []
 
             if node.left.val=='*':
                 dist0=SSD(qpoint, node.left.index[0])
@@ -203,13 +205,16 @@ class BinaryTree:
                 anspoint[node.left.child[0]] = dist0
                 anspoint[node.left.child[1]] = dist1
                 end = time.time()
-                ans[node.val].append({"time":(end - start) * 1000})
-                ans[node.val].append({node.left.child[0]: 0})
-                ans[node.val].append({node.left.child[1]: 0})
-                ans[str(node.left.child[0])]=[]
-                ans[str(node.left.child[1])]=[]
-                ans[str(node.left.child[0])].append({"time": (end0 - start) * 1000})
-                ans[str(node.left.child[1])].append({"time": (end1 - start) * 1000})
+                temp.append({"time":(end - start) * 1000})
+                temp.append({node.left.child[0]: 0})
+                temp.append({node.left.child[1]: 0})
+                apoint["val2"] = temp
+                ans.append(apoint)
+                apoint={"val1":str(node.left.child[0]),"val2":[{"time":(end0 - start) * 1000}]}
+                ans.append(apoint)
+                apoint = {"val1": str(node.left.child[1]), "val2": [{"time": (end1 - start) * 1000}]}
+                ans.append(apoint)
+
                 continue
             leftmindist=node.left.mindist(qpoint,pk)
             midmindist= node.mid.mindist(qpoint,pk)
@@ -217,28 +222,29 @@ class BinaryTree:
 
             if phe_protocol.PHEProtocol(minmaxdistv).pin_boolmore(leftmindist)  and node.left is not None and node.left.val !='null' and node.left.val !=None and phe_protocol.PHEProtocol(dist).pin_boolmore(leftmindist):
                 qunne.append(node.left)
-                ans[node.val].append({node.left.val:0})
+                temp.append({node.left.val:0})
                 mindistv=phe_protocol.PHEProtocol(leftmindist).phe_min(mindistv)
                 minmaxdistv=phe_protocol.PHEProtocol(node.left.minmaxdist(qpoint,pk)).phe_min(minmaxdistv)
             else:
-                ans[node.val].append({node.left.val:-1})
+                temp.append({node.left.val:-1})
             if phe_protocol.PHEProtocol(minmaxdistv).pin_boolmore(midmindist)  and node.mid is not None and node.mid.val !='null' and node.mid.val !=None and phe_protocol.PHEProtocol(dist).pin_boolmore(midmindist):
                 qunne.append(node.mid)
-                ans[node.val].append({node.mid.val:0})
+                temp.append({node.mid.val:0})
                 mindistv=phe_protocol.PHEProtocol(midmindist).phe_min(mindistv)
                 minmaxdistv=phe_protocol.PHEProtocol(node.mid.minmaxdist(qpoint,pk)).phe_min(minmaxdistv)
             else:
-                ans[node.val].append({node.mid.val:-1})
+                temp.append({node.mid.val:-1})
             if phe_protocol.PHEProtocol(minmaxdistv).pin_boolmore(rightmindist)  and node.right is not None and node.right.val !='null' and node.right.val !=None and phe_protocol.PHEProtocol(dist).pin_boolmore(rightmindist):
                 qunne.append(node.right)
-                ans[node.val].append({node.right.val:0})
+                temp.append({node.right.val:0})
                 mindistv=phe_protocol.PHEProtocol(rightmindist).phe_min(mindistv)
                 minmaxdistv=phe_protocol.PHEProtocol(node.right.minmaxdist(qpoint,pk)).phe_min(minmaxdistv)
             else:
-                ans[node.val].append({node.right.val:-1})
+                temp.append({node.right.val:-1})
             end = time.time()
-            ans[node.val].append({"time":(end-start)*1000})
-
+            temp.append({"time":(end-start)*1000})
+            apoint["val2"]=temp
+            ans.append(apoint)
 
         return lastans(anspoint,k),ans
 
