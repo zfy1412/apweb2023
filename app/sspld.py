@@ -9,6 +9,9 @@ import time
 
 import pandas as pd
 import phe
+import app
+from app import newkeypair
+from app import protocol as phe_protocol
 
 from app import newkeypair
 from app import protocol as phe_protocol

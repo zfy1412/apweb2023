@@ -5,6 +5,7 @@ from django.http import JsonResponse
 from django.shortcuts import render
 from django.views.decorators.csrf import csrf_exempt
 from smpcp import CloudPlatform, CloudPlatformThird, SecureMultiPartyComputationProtocol
+import app
 from app import algorithm
 
 from app.src.keypair import generate_keypair as gk

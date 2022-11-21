@@ -7,6 +7,7 @@
           <resourceRoots>
             <path value="file://$PROJECT_DIR$/app/src/keypair" />
             <path value="file://$PROJECT_DIR$/encryption" />
+            <path value="file://$PROJECT_DIR$/app/encryption" />
           </resourceRoots>
         </entryData>
       </entry>
