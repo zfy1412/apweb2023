@@ -172,8 +172,9 @@ tex2jax: {inlineMath: [['$','$'], ['(',')']]}
             <!-- todo: 更新下标  -->
             <td>$$1$$</td>
             <td>$$E_{pk}(Root)$$</td>
-            <td>$$MINDIST(E_{pk}(Q),E_{pk}(Root)）\\PUSH（E_{pk}(R_0)）\\PUSH（E_{pk}(R_1)）\\PUSH（E_{pk}(R_2)）$$</td>
-            <td>$$SMIN$$</td>
+            <td>$$SMIN(MINDIST(E_{pk}(Q),E_{pk}(R_0)),MINDIST)\\MINDIST(E_{pk}(Q),E_{pk}(R_1))\\MINDIST(E_{pk}(Q),E_{pk}(R_2))\\PUSH（E_{pk}(R_0))\\PUSH（E_{pk}(R_2))$$</td>
+            <td>$$SMIN\\SSPLD\\SSED$$</td>
+              <td>426.73ms</td>
           </tr>
           <tr>
             <td>$$2$$</td>
