@@ -5,9 +5,9 @@ import pandas as pd
 import phe
 import time
 from functools import cmp_to_key
-import newkeypair
-import protocol as phe_protocol
-import sspld
+from app import newkeypair
+from app import protocol as phe_protocol
+from app import sspld
 
 def mycmp(x,y):
    return phe_protocol.PHEProtocol(x[1]).pin_boolmore(y[1])

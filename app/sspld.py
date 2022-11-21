@@ -10,8 +10,8 @@ import time
 import pandas as pd
 import phe
 
-import newkeypair
-import protocol as phe_protocol
+from app import newkeypair
+from app import protocol as phe_protocol
 
 
 def phe_sspld(pk, p0, p1, p2):

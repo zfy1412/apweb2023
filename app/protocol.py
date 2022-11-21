@@ -8,8 +8,8 @@ import random
 
 import pandas as pd
 import phe
-import newkeypair
-from newkeypair import PUBLIC_KEY_PATH, PRIVATE_KEY_PATH
+from app import newkeypair
+from app.newkeypair import PUBLIC_KEY_PATH, PRIVATE_KEY_PATH
 
 
 class PHEProtocol(object):
