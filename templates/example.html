@@ -59,7 +59,28 @@ tex2jax: {inlineMath: [['$','$'], ['(',')']]}
   <div class="p-4">
     &nbsp;
   </div>
-<div id="div1">
+
+  <div class="row mb-4 mx-auto">
+    <div class="col-2 offset-2">
+      <label for="inputPassword5" class="form-label display-4 mb-4">Q-X</label>
+      <input type="text" id="QX" class="form-control" >
+    </div>
+    <div class="col-2">
+      <label for="inputPassword5" class="form-label display-4 mb-4">Q-Y</label>
+      <input type="text" id="QY" class="form-control" >
+    </div>
+    <div class="col-2">
+      <label for="inputPassword5" class="form-label display-4 mb-4">K</label>
+      <input type="text" id="K" class="form-control" >
+    </div>
+    <div class="col-1">
+      <div class="mb-5">
+        &nbsp
+      </div>
+      <button id="submit" type="button" class="btn btn-success">Submit</button>
+    </div>
+  </div>
+<div id="div1 mt-3">
   <div style="background-color:rgba(255,255,255,0);">
 
     <div id="menu"  style="background-color:rgba(231,215,215,0);height:850px;width:1800px;float:left;">
@@ -142,6 +163,7 @@ tex2jax: {inlineMath: [['$','$'], ['(',')']]}
           </thead>
           <tbody>
           <tr>
+            <!-- todo: 更新下标  -->
             <td>$$1$$</td>
             <td>$$E_{pk}(Root)$$</td>
             <td>$$MINDIST(E_{pk}(Q),E_{pk}(Root)）\\PUSH（E_{pk}(R_0)）\\PUSH（E_{pk}(R_1)）\\PUSH（E_{pk}(R_2)）$$</td>
@@ -246,6 +268,20 @@ tex2jax: {inlineMath: [['$','$'], ['(',')']]}
 
 
 <script type="text/javascript">
+  var q=[600,200]
+ $(document).ready(function () {
+    $('#submit').click(function(){
+        qx=$('#QX').val()
+        qy=$('#QY').val()
+        k=$('#K').val()
+        q[0]=Number(qx)
+        q[1]=Number(qy)
+        console.log(q,k)
+        myChart.setOption(option);
+    })
+  })
+
+    
   // 基于准备好的dom，初始化echarts实例
   var myChart = echarts.init(document.getElementById('main'));
 
@@ -534,8 +570,9 @@ tex2jax: {inlineMath: [['$','$'], ['(',')']]}
         name:'query point',
         symbolSize: 20,
         data: [
-          [600,200]
-
+          q
+          // [600,200]
+          /*todo: 更改Q*/
 
         ],
         type: 'scatter',
