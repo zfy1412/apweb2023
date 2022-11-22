@@ -210,11 +210,6 @@ class BinaryTree:
                 temp.append({node.left.child[1]: 0})
                 apoint["val2"] = temp
                 ans.append(apoint)
-                apoint={"val1":str(node.left.child[0]),"val2":[{"time":(end0 - start) * 1000}]}
-                ans.append(apoint)
-                apoint = {"val1": str(node.left.child[1]), "val2": [{"time": (end1 - start) * 1000}]}
-                ans.append(apoint)
-
                 continue
             leftmindist=node.left.mindist(qpoint,pk)
             midmindist= node.mid.mindist(qpoint,pk)
