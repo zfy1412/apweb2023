@@ -83,8 +83,15 @@ tex2jax: {inlineMath: [['$','$'], ['(',')']]}
       </div>
       <button id="submit" type="button" class="btn btn-success">Submit</button>
     </div>
-  </div>]
-
+  </div>
+  <div class="row mb-4 mx-auto">
+    <div class="col-3 display-6">
+      $$answer$$
+    </div>
+    <div id="knnans" class="col-7 display-6">
+      $$p1,p2,p3,p4$$
+    </div>
+  </div>
 <div id="div1 mt-3">
   <div style="background-color:rgba(255,255,255,0);">
 
@@ -169,103 +176,13 @@ tex2jax: {inlineMath: [['$','$'], ['(',')']]}
           </thead>
           <tbody id="res">
           <tr>
-            <!-- todo: 更新下标  -->
             <td>$$1$$</td>
             <td>$$E_{pk}(Root)$$</td>
-            <td>$$SMIN(MINDIST(E_{pk}(Q),E_{pk}(R_0)),MINDIST)\\MINDIST(E_{pk}(Q),E_{pk}(R_1))\\MINDIST(E_{pk}(Q),E_{pk}(R_2))\\PUSH（E_{pk}(R_0))\\PUSH（E_{pk}(R_2))$$</td>
+            <td>$$SMIN(MINDIST(E_{pk}(Q),E_{pk}(R_0)),MINDIST)\\SMIN(MINDIST(E_{pk}(Q),E_{pk}(R_0)),MINDIST)\\SMIN(MINDIST(E_{pk}(Q),E_{pk}(R_0)),MINDIST)\\PUSH（E_{pk}(R_0))\\PUSH（E_{pk}(R_2))$$</td>
             <td>$$SMIN\\SSPLD\\SSED$$</td>
-              <td>426.73ms</td>
+              <td>$$426.73ms$$</td>
           </tr>
-          <tr>
-            <td>$$2$$</td>
-            <td>$$E_{pk}(R_0)$$</td>
-            <td>$$MINDIST(E_{pk}(Q),E_{pk}(R_0))\\MINMAXDIST(E_{pk}(Q),E_{pk}(R_0))$$</td>
-            <td>$$SMIN\\SSPLD\\SSED$$</td>
-          </tr>
-          <tr>
-            <td>$$3$$</td>
-            <td>$$E_{pk}(R_1)$$</td>
-            <td>$$MINDIST(E_{pk}(Q),E_{pk}(R_1))\\MINMAXDIST(E_{pk}(Q),E_{pk}(R_1))$$</td>
-            <td>$$SMIN\\SSPLD\\SSED$$</td>
-          </tr>
-          <tr>
-            <td>$$4$$</td>
-            <td>$$E_{pk}(R_2)$$</td>
-            <td>$$MINDIST(E_{pk}(Q),E_{pk}(R_2))\\MINMAXDIST(E_{pk}(Q),E_{pk}(R_2))$$</td>
-            <td>$$SMIN\\SSPLD\\SSED$$</td>
-          </tr>
-          <tr>
-            <td>$$$$</td>
-            <td>$$-$$</td>
-            <td>$$MINDIST(E_{pk}(Q),E_{pk}(R_0))< MINMAXDIST(E_{pk}(Q),E_{pk}(R_1))\\MINDIST(E_{pk}(Q),E_{pk}(R_0))< MINMAXDIST(E_{pk}(Q),E_{pk}(R_2))\\PUSH（E_{pk}(R_3))\\PUSH（E_{pk}(R_4))\\PUSH（E_{pk}(R_5))$$</td>
-            <td>$$SMIN$$</td>
-          </tr>
-          <tr>
-            <td>$$5$$</td>
-            <td>$$E_{pk}(R_3)$$</td>
-            <td>$$MINDIST(E_{pk}(Q),E_{pk}(R_3))\\MINMAXDIST(E_{pk}(Q),E_{pk}(R_3))$$</td>
-            <td>$$SMIN\\SSPLD\\SSED$$</td>
-          </tr>
-          <tr>
-            <td>$$6$$</td>
-            <td>$$E_{pk}(R_4)$$</td>
-            <td>$$MINDIST(E_{pk}(Q),E_{pk}(R_4))\\MINMAXDIST(E_{pk}(Q),E_{pk}(R_4))$$</td>
-            <td>$$SMIN\\SSPLD\\SSED$$</td>
-          </tr>
-          <tr>
-            <td>$$7$$</td>
-            <td>$$E_{pk}(R_5)$$</td>
-            <td>$$MINDIST(E_{pk}(Q),E_{pk}(R_5))\\MINMAXDIST(E_{pk}(Q),E_{pk}(R_5))$$</td>
-            <td>$$SMIN\\SSPLD\\SSED$$</td>
-          </tr>
-          <tr>
-            <td>$$$$</td>
-            <td>$$-$$</td>
-            <td>$$MINDIST(E_{pk}(Q),E_{pk}(R_3))< MINMAXDIST(E_{pk}(Q),E_{pk}(R_4))\\MINDIST(E_{pk}(Q),E_{pk}(R_3))< MINMAXDIST(E_{pk}(Q),E_{pk}(R_5))\\PUSH（E_{pk}(R_6))\\PUSH（E_{pk}(R_7))\\PUSH（E_{pk}(R_8))$$</td>
-            <td>$$SMIN$$</td>
-          </tr>
-          <tr>
-            <td>$$8$$</td>
-            <td>$$E_{pk}(R_6)$$</td>
-            <td>$$MINDIST(E_{pk}(Q),E_{pk}(R_6))\\MINMAXDIST(E_{pk}(Q),E_{pk}(R_6))$$</td>
-            <td>$$SMIN\\SSPLD\\SSED$$</td>
-          </tr>
-          <tr>
-            <td>$$9$$</td>
-            <td>$$E_{pk}(R_7)$$</td>
-            <td>$$MINDIST(E_{pk}(Q),E_{pk}(R_7))\\MINMAXDIST(E_{pk}(Q),E_{pk}(R_7))$$</td>
-            <td>$$SMIN\\SSPLD\\SSED$$</td>
-          </tr>
-          <tr>
-            <td>$$10$$</td>
-            <td>$$E_{pk}(R_8)$$</td>
-            <td>$$MINDIST(E_{pk}(Q),E_{pk}(R_8))\\MINMAXDIST(E_{pk}(Q),E_{pk}(R_8))$$</td>
-            <td>$$SMIN\\SSPLD\\SSED$$</td>
-          </tr>
-          <tr>
-            <td>$$$$</td>
-            <td>$$-$$</td>
-            <td>$$MINDIST(E_{pk}(Q),E_{pk}(R_6))< MINMAXDIST(E_{pk}(Q),E_{pk}(R_7))\\MINDIST(E_{pk}(Q),E_{pk}(R_6))< MINMAXDIST(E_{pk}(Q),E_{pk}(R_8))\\PUSH（E_{pk}(P_{14}))\\PUSH（E_{pk}(P_{15}))$$</td>
-            <td>$$SMIN$$</td>
-          </tr>
-          <tr>
-            <td>$$11$$</td>
-            <td>$$E_{pk}(P_{14})$$</td>
-            <td>$$MINDIST(E_{pk}(Q),E_{pk}(P_{14})) = E_{pk}(d^2_{Q \longrightarrow P_{14}})$$</td>
-            <td>$$SSED$$</td>
-          </tr>
-          <tr>
-            <td>$$12$$</td>
-            <td>$$E_{pk}(P_{15})$$</td>
-            <td>$$MINDIST(E_{pk}(Q),E_{pk}(P_{15}) = E_{pk}(d^2_{Q \longrightarrow P_{15}})$$</td>
-            <td>$$SSED$$</td>
-          </tr>
-          <tr>
-            <td>$$$$</td>
-            <td>$$-$$</td>
-            <td>$$MINDIST(E_{pk}(Q),E_{pk}(P_{15}))< MINDIST(E_{pk}(Q),E_{pk}(P_{14}))\\result \; is \; E_{pk}(P_{15})$$</td>
-            <td>$$SMIN$$</td>
-          </tr>
+
           </tbody>
     </table>
   </div>
@@ -290,18 +207,88 @@ tex2jax: {inlineMath: [['$','$'], ['(',')']]}
           k:k,
           length:l
         }
-        let json=JSON.stringify(data)
+
         console.log(data)
-        
+
         $.ajax({
           type: 'post',
-          url: '/knn',
-          dataType: 'json',
-          data: json,
+          url: '/knn/',
+          data: data,
           success: function (res) {
-            console.log(res)
+            let d=JSON.parse(res.answerstr)
+            let answer=d.answer
+            let answerpoint=d.answerpoint
+            console.log(answer)
+            console.log(answerpoint)
 
+            let answerString="$$"
+            for(let i=0;i<answer.length;i++){
+              if(i!=answer.length-1){
+                answerString+='P_'+answer[i]+','
+              }else{
+                answerString+='P_'+answer[i]
+              }
+            }
+            answerString+="$$"
+            console.log(answerString)
+            $('#knnans').text(answerString)
+            /*
+            * <tr>
+            <td>$$1$$</td>
+            <td>$$E_{pk}(Root)$$</td>
+            <td>$$SMIN(MINDIST(E_{pk}(Q),E_{pk}(R_0)),MINDIST)\\SMIN(MINDIST(E_{pk}(Q),E_{pk}(R_0)),MINDIST)\\SMIN(MINDIST(E_{pk}(Q),E_{pk}(R_0)),MINDIST)\\PUSH（E_{pk}(R_0))\\PUSH（E_{pk}(R_2))$$</td>
+            <td>$$SMIN\\SSPLD\\SSED$$</td>
+              <td>$$426.73ms$$</td>
+          </tr>
+            * */
+            for(let i=0;i<answerpoint.length;i++){
+              if(answerpoint[i].val2.length==4){
+                $('#res').append('<tr>')
+                $('#res').append('<td>$$'+(i+1)+'$$</td>')
+                $('#res').append('<td>$$E_{pk}('+answerpoint[i].val1+')$$</td>')
 
+                let ss="<td>$$"
+                ss+='SMIN(MINDIST(E_{pk}(Q),E_{pk}('+Object.keys(answerpoint[i].val2[0])+')),MINDIST)\\\\'
+                ss+='SMIN(MINDIST(E_{pk}(Q),E_{pk}('+Object.keys(answerpoint[i].val2[1])+')),MINDIST)\\\\'
+                ss+='SMIN(MINDIST(E_{pk}(Q),E_{pk}('+Object.keys(answerpoint[i].val2[2])+')),MINDIST)\\\\'
+                if(Object.values(answerpoint[i].val2[0])==0){
+                  ss+='PUSH（E_{pk}('+Object.keys(answerpoint[i].val2[0])+'))\\\\'
+                }
+                if(Object.values(answerpoint[i].val2[1])==0){
+                  ss+='PUSH（E_{pk}('+Object.keys(answerpoint[i].val2[1])+'))\\\\'
+                }
+                if(Object.values(answerpoint[i].val2[2])==0){
+                  ss+='PUSH（E_{pk}('+Object.keys(answerpoint[i].val2[2])+'))\\\\'
+                }
+                ss+="$$</td>"
+                $('#res').append(ss)
+
+                $('#res').append('<td>$$SMIN\\SSPLD\\SSED$$</td>')
+                $('#res').append('<td>$$'+answerpoint[i].val2[3].time+'$$</td>')
+                $('#res').append('</tr>')
+              }
+              else if(answerpoint[i].val2.length==3){
+                $('#res').append('<tr>')
+                $('#res').append('<td>$$'+(i+1)+'$$</td>')
+                $('#res').append('<td>$$E_{pk}('+answerpoint[i].val1+')$$</td>')
+
+                let ss="<td>$$"
+                ss+='SMIN(SSED(E_{pk}(Q),E_{pk}('+Object.keys(answerpoint[i].val2[1])+')),DIST)\\\\'
+                ss+='SMIN(SSED(E_{pk}(Q),E_{pk}('+Object.keys(answerpoint[i].val2[2])+')),DIST)\\\\'
+                if(Object.values(answerpoint[i].val2[1])==0){
+                  ss+='PUSH（E_{pk}('+Object.keys(answerpoint[i].val2[1])+'))\\\\'
+                }
+                if(Object.values(answerpoint[i].val2[2])==0){
+                  ss+='PUSH（E_{pk}('+Object.keys(answerpoint[i].val2[2])+'))\\\\'
+                }
+                ss+="$$</td>"
+                $('#res').append(ss)
+
+                $('#res').append('<td>$$SSED\\SMIN$$</td>')
+                $('#res').append('<td>$$'+answerpoint[i].val2[0].time+'$$</td>')
+                $('#res').append('</tr>')
+              }
+            }
             myChart.setOption(option);
           }
         })
