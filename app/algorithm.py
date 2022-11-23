@@ -245,7 +245,7 @@ class BinaryTree:
 
 
 def sknn(qx, qy, k,length):
-    arr = ['R_oot', 'R_0', 'R_3', 'R_6', '*', '14', '15', 'null', 'null', ' R_7 ', '*', '16', '17', 'null',
+    arr = ['Root', 'R_0', 'R_3', 'R_6', '*', '14', '15', 'null', 'null', ' R_7 ', '*', '16', '17', 'null',
            'null', 'R_8', '*', '44', '45', 'null', 'null', 'R_4', 'R_12', '*', '8', '9', 'null', 'null', 'R_13',
            '*', '10', '11', 'null', 'null', 'R_14', '*', '12', '13', 'null', 'null', 'R_5', 'R_9', '*', '18',
            '19', 'null', 'null', 'R_10', '*', '20', '21', 'null', 'null', 'R_11', '*', '22', '23', 'null', 'null',
