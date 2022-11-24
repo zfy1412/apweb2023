@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
   <meta charset="UTF-8">
   <title>PHE Protocol Demo</title>
@@ -8,8 +9,7 @@
   <script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
   <script src="https://cdn.staticfile.org/twitter-bootstrap/5.1.1/js/bootstrap.bundle.min.js"></script>
   <script src="/static/index.js"></script>
-  <script type="text/javascript"
-          src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+  <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
   </script>
   <script type="text/x-mathjax-config">
 MathJax.Hub.Config({
@@ -21,8 +21,9 @@ tex2jax: {inlineMath: [['$','$'], ['(',')']]}
   <!-- 引入刚刚下载的 ECharts 文件 -->
   <style>
     body {
-      margin:0px;
+      margin: 0px;
     }
+
     #div1 {
       width: 1800px;
       height: 850px;
@@ -34,178 +35,181 @@ tex2jax: {inlineMath: [['$','$'], ['(',')']]}
       bottom: 0;
 
     }
-    #div2{
+
+    #div2 {
       width: 1800px;
       height: 850px;
-      margin-top:100px;
+      margin-top: 100px;
       /*position: absolute;*/
       top: 2000px;
       left: 0;
       right: 0;
       bottom: 0;
     }
-    h1{
-      text-align:center
-    }
 
+    h1 {
+      text-align: center
+    }
   </style>
 </head>
+
 <body>
-<div style="height: auto">
+  <div style="height: auto">
 
-  <div id="header" style="background-color:#0fc428; height: 120px;padding-top: 1px;padding-bottom: 3px">
-    <h1 style="margin-bottom:0px;">$$Secure \; K-NearestNeighbor \; based\; on \; R-tree $$</h1>
-  </div>
-  <div class="p-4">
-    &nbsp;
-  </div>
+    <div id="header" style="background-color:#0fc428; height: 120px;padding-top: 1px;padding-bottom: 3px">
+      <h1 style="margin-bottom:0px;">$$Secure \; K-NearestNeighbor \; based\; on \; R-tree $$</h1>
+    </div>
+    <div class="p-4">
+      &nbsp;
+    </div>
 
-  <div class="row mb-4 mx-auto">
-    <div class="col-2 offset-2">
-      <label  class="form-label display-4 mb-4">Q-X</label>
-      <input type="text" id="QX" class="form-control" >
-    </div>
-    <div class="col-2">
-      <label  class="form-label display-4 mb-4">Q-Y</label>
-      <input type="text" id="QY" class="form-control" >
-    </div>
-    <div class="col-2">
-      <label  class="form-label display-4 mb-4">K</label>
-      <input type="text" id="K" class="form-control" >
-    </div>
-    <div class="col-2">
-      <label  class="form-label display-4 mb-4">Length</label>
-      <input type="text" id="length" class="form-control" >
-    </div>
-    <div class="col-1">
-      <div class="mb-5">
-        &nbsp
+    <div class="row mb-4 mx-auto">
+      <div class="col-2 offset-2">
+        <label class="form-label display-4 mb-4">Q-X</label>
+        <input type="text" id="QX" class="form-control">
       </div>
-      <button id="submit" type="button" class="btn btn-success">Submit</button>
-    </div>
-  </div>
-  <div class="row mb-4 mx-auto">
-    <div class="col-3 display-6">
-      $$answer$$
-    </div>
-    <div id="knnans" class="col-7 display-6">
-      $$p1,p2,p3,p4$$
-    </div>
-  </div>
-<div id="div1 mt-3">
-  <div style="background-color:rgba(255,255,255,0);">
-
-    <div id="menu"  style="background-color:rgba(231,215,215,0);height:850px;width:1800px;float:left;">
-      
-      <div id="main" class="pt-5" style="width: 800px;height:850px;float:left;">
-        <script src="../static/echarts.js"></script>
+      <div class="col-2">
+        <label class="form-label display-4 mb-4">Q-Y</label>
+        <input type="text" id="QY" class="form-control">
       </div>
+      <div class="col-2">
+        <label class="form-label display-4 mb-4">K</label>
+        <input type="text" id="K" class="form-control">
+      </div>
+      <div class="col-2">
+        <label class="form-label display-4 mb-4">Length</label>
+        <input type="text" id="length" class="form-control">
+      </div>
+      <div class="col-1">
+        <div class="mb-5">
+          &nbsp
+        </div>
+        <button id="submit" type="button" class="btn btn-success">Submit</button>
+      </div>
+    </div>
+    <div class="row mb-4 mx-auto">
+      <div class="col-3 display-6">
+        $$answer$$
+      </div>
+      <div id="knnans" class="col-7 display-6">
+      </div>
+    </div>
+    <div id="div1 mt-3">
+      <div style="background-color:rgba(255,255,255,0);">
+
+        <div id="menu" style="background-color:rgba(231,215,215,0);height:850px;width:1800px;float:left;">
+
+          <div id="main" class="pt-5" style="width: 800px;height:850px;float:left;">
+            <script src="../static/echarts.js"></script>
+          </div>
 
 
-    <div id="content" style="background-color:rgba(255,255,255,0);height:800px;width:1000px;float:right;">
+          <div id="content" style="background-color:rgba(255,255,255,0);height:800px;width:1000px;float:right;">
+            <table class="table">
+              <caption align="top">
+                <h1 class="text-center text-black display-6" style="background-color: rgba(0,0,0,0);">$$Encrypted \;
+                  Index$$</h1>
+              </caption>
+              <thead>
+                <tr>
+                  <th>$$Index$$</th>
+                  <th>$$Encrypted\\index$$</th>
+
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>$$P_0(96,94)$$</td>
+                  <td>$$E_{pk}(P_0)$$</td>
+                </tr>
+                <tr>
+                  <td>$$P_1(164,64)$$</td>
+                  <td>$$E_{pk}(P_1)$$</td>
+                </tr>
+                <tr>
+                  <td>$$P_2(67,150)$$</td>
+                  <td>$$E_{pk}(P_2)$$</td>
+                </tr>
+                <tr>
+                  <td>$$......$$</td>
+                  <td>$$......$$</td>
+                </tr>
+                <tr>
+                  <td>$$P_{47}(861,919)$$</td>
+                  <td>$$E_{pk}(P_{47})$$</td>
+                </tr>
+                <tr>
+                  <td>$$Root(R_0,R_1,R_2)$$</td>
+                  <td>$$E_{pk}(Root)$$</td>
+                </tr>
+                <tr>
+                  <td>$$R_0(R_3,R_4,R_5)$$</td>
+                  <td>$$E_{pk}(R_0)$$</td>
+                </tr>
+                <tr>
+                  <td>$$......$$</td>
+                  <td>$$......$$</td>
+                </tr>
+                <tr>
+                  <td>$$R_8(P_{44},R_{45})$$</td>
+                  <td>$$E_{pk}(R_8)$$</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="p-5">
+      &nbsp;
+    </div>
+    <div id="div2">
       <table class="table">
-        <caption align="top" >
-          <h1 class="text-center text-black display-6"style="background-color: rgba(0,0,0,0);">$$Encrypted \; Index$$</h1>
+        <caption align="top">
+          <h1 class="text-center text-black display-6" style="background-color: rgba(0,0,0,0);">$$computational \;
+            steps$$</h1>
         </caption>
         <thead>
-        <tr>
-          <th>$$Index$$</th>
-          <th>$$Encrypted\\index$$</th>
-
-        </tr>
-        </thead>
-        <tbody>
-        <tr>
-          <td>$$P_0(96,94)$$</td>
-          <td>$$E_{pk}(P_0)$$</td>
-        </tr>
-        <tr>
-          <td>$$P_1(164,64)$$</td>
-          <td>$$E_{pk}(P_1)$$</td>
-        </tr>
-        <tr>
-          <td>$$P_2(67,150)$$</td>
-          <td>$$E_{pk}(P_2)$$</td>
-        </tr>
-        <tr>
-          <td>$$......$$</td>
-          <td>$$......$$</td>
-        </tr>
-        <tr>
-          <td>$$P_{47}(861,919)$$</td>
-          <td>$$E_{pk}(P_{47})$$</td>
-        </tr>
-        <tr>
-          <td>$$Root(R_0,R_1,R_2)$$</td>
-          <td>$$E_{pk}(Root)$$</td>
-        </tr>
-        <tr>
-          <td>$$R_0(R_3,R_4,R_5)$$</td>
-          <td>$$E_{pk}(R_0)$$</td>
-        </tr>
-        <tr>
-          <td>$$......$$</td>
-          <td>$$......$$</td>
-        </tr>
-        <tr>
-          <td>$$R_8(P_{44},R_{45})$$</td>
-          <td>$$E_{pk}(R_8)$$</td>
-        </tr>
-        </tbody>
-      </table>
-    </div>
-    </div>
-  </div>
-</div>
-  <div class="p-5">
-    &nbsp;
-  </div>
-  <div id="div2">
-    <table class="table">
-      <caption align="top" >
-        <h1 class="text-center text-black display-6"style="background-color: rgba(0,0,0,0);">$$computational \; steps$$</h1>
-          </caption>
-          <thead>
           <tr>
             <th>$$sequence$$</th>
             <th>$$Entity$$</th>
             <th>$$Operation$$</th>
             <th>$$Protocol$$</th>
-              <th>$$time$$</th>
+            <th>$$time$$</th>
           </tr>
-          </thead>
-          <tbody id="res">
-          <tr>
+        </thead>
+        <tbody id="res">
+          <!-- <tr>
             <td>$$1$$</td>
             <td>$$E_{pk}(Root)$$</td>
             <td>$$SMIN(MINDIST(E_{pk}(Q),E_{pk}(R_0)),MINDIST)\\SMIN(MINDIST(E_{pk}(Q),E_{pk}(R_0)),MINDIST)\\SMIN(MINDIST(E_{pk}(Q),E_{pk}(R_0)),MINDIST)\\PUSH（E_{pk}(R_0))\\PUSH（E_{pk}(R_2))$$</td>
             <td>$$SMIN\\SSPLD\\SSED$$</td>
               <td>$$426.73ms$$</td>
-          </tr>
+          </tr> -->
 
-          </tbody>
-    </table>
+        </tbody>
+      </table>
+    </div>
   </div>
-</div>
 
-<!-- 为 ECharts 准备一个定义了宽高的 DOM -->
+  <!-- 为 ECharts 准备一个定义了宽高的 DOM -->
 
 
-<script type="text/javascript">
-  var q=[600,200]
- $(document).ready(function () {
-    $('#submit').click(function(){
-        qx=$('#QX').val()
-        qy=$('#QY').val()
-        k=$('#K').val()
-        l=$('#length').val()
-        q[0]=Number(qx)
-        q[1]=Number(qy)
-        let data={
-          qx:qx,
-          qy:qy,
-          k:k,
-          length:l
+  <script type="text/javascript">
+    var q = [600, 200]
+    $(document).ready(function () {
+      $('#submit').click(function () {
+        qx = $('#QX').val()
+        qy = $('#QY').val()
+        k = $('#K').val()
+        l = $('#length').val()
+        q[0] = Number(qx)
+        q[1] = Number(qy)
+        let data = {
+          qx: qx,
+          qy: qy,
+          k: k,
+          length: l
         }
 
         console.log(data)
@@ -215,425 +219,422 @@ tex2jax: {inlineMath: [['$','$'], ['(',')']]}
           url: '/knn/',
           data: data,
           success: function (res) {
-            let d=JSON.parse(res.answerstr)
-            let answer=d.answer
-            let answerpoint=d.answerpoint
+            let d = JSON.parse(res.answerstr)
+            let answer = d.answer
+            let answerpoint = d.answerpoint
             console.log(answer)
             console.log(answerpoint)
 
-            let answerString="$$"
-            for(let i=0;i<answer.length;i++){
-              if(i!=answer.length-1){
-                answerString+='P_'+answer[i]+','
-              }else{
-                answerString+='P_'+answer[i]
+            let answerString = "$$"
+            for (let i = 0; i < answer.length; i++) {
+              if (i != answer.length - 1) {
+                answerString += answer[i] + ','
+              } else {
+                answerString += answer[i]
               }
             }
-            answerString+="$$"
+            answerString += "$$"
             console.log(answerString)
             $('#knnans').text(answerString)
-            /*
-            * <tr>
-            <td>$$1$$</td>
-            <td>$$E_{pk}(Root)$$</td>
-            <td>$$SMIN(MINDIST(E_{pk}(Q),E_{pk}(R_0)),MINDIST)\\SMIN(MINDIST(E_{pk}(Q),E_{pk}(R_0)),MINDIST)\\SMIN(MINDIST(E_{pk}(Q),E_{pk}(R_0)),MINDIST)\\PUSH（E_{pk}(R_0))\\PUSH（E_{pk}(R_2))$$</td>
-            <td>$$SMIN\\SSPLD\\SSED$$</td>
-              <td>$$426.73ms$$</td>
-          </tr>
-            * */
-            for(let i=0;i<answerpoint.length;i++){
-              if(answerpoint[i].val2.length==4){
+            for (let i = 0; i < answerpoint.length; i++) {
+              if (answerpoint[i].val2.length == 4) {
                 $('#res').append('<tr>')
-                $('#res').append('<td>$$'+(i+1)+'$$</td>')
-                $('#res').append('<td>$$E_{pk}('+answerpoint[i].val1+')$$</td>')
+                $('#res').append('<td>$$' + (i + 1) + '$$</td>')
+                $('#res').append('<td>$$E_{pk}(' + answerpoint[i].val1 + ')$$</td>')
 
-                let ss="<td>$$"
-                ss+='SMIN(MINDIST(E_{pk}(Q),E_{pk}('+Object.keys(answerpoint[i].val2[0])+')),MINDIST)\\\\'
-                ss+='SMIN(MINDIST(E_{pk}(Q),E_{pk}('+Object.keys(answerpoint[i].val2[1])+')),MINDIST)\\\\'
-                ss+='SMIN(MINDIST(E_{pk}(Q),E_{pk}('+Object.keys(answerpoint[i].val2[2])+')),MINDIST)\\\\'
-                if(Object.values(answerpoint[i].val2[0])==0){
-                  ss+='PUSH（E_{pk}('+Object.keys(answerpoint[i].val2[0])+'))\\\\'
+                let ss = "<td>$$"
+                ss += 'SMIN(MINDIST(E_{pk}(Q),E_{pk}(' + Object.keys(answerpoint[i].val2[0]) + ')),MINDIST)\\\\'
+                ss += 'SMIN(MINDIST(E_{pk}(Q),E_{pk}(' + Object.keys(answerpoint[i].val2[1]) + ')),MINDIST)\\\\'
+                ss += 'SMIN(MINDIST(E_{pk}(Q),E_{pk}(' + Object.keys(answerpoint[i].val2[2]) + ')),MINDIST)\\\\'
+                if (Object.values(answerpoint[i].val2[0]) == 0) {
+                  ss += 'PUSH（E_{pk}(' + Object.keys(answerpoint[i].val2[0]) + '))\\\\'
                 }
-                if(Object.values(answerpoint[i].val2[1])==0){
-                  ss+='PUSH（E_{pk}('+Object.keys(answerpoint[i].val2[1])+'))\\\\'
+                if (Object.values(answerpoint[i].val2[1]) == 0) {
+                  ss += 'PUSH（E_{pk}(' + Object.keys(answerpoint[i].val2[1]) + '))\\\\'
                 }
-                if(Object.values(answerpoint[i].val2[2])==0){
-                  ss+='PUSH（E_{pk}('+Object.keys(answerpoint[i].val2[2])+'))\\\\'
+                if (Object.values(answerpoint[i].val2[2]) == 0) {
+                  ss += 'PUSH（E_{pk}(' + Object.keys(answerpoint[i].val2[2]) + '))\\\\'
                 }
-                ss+="$$</td>"
+                ss += "$$</td>"
                 $('#res').append(ss)
 
-                $('#res').append('<td>$$SMIN\\SSPLD\\SSED$$</td>')
-                $('#res').append('<td>$$'+answerpoint[i].val2[3].time+'$$</td>')
+                $('#res').append('<td>$$SMIN\\\\SSPLD\\\\SSED$$</td>')
+                $('#res').append('<td>$$' + answerpoint[i].val2[3].time + '$$</td>')
                 $('#res').append('</tr>')
               }
-              else if(answerpoint[i].val2.length==3){
+              else if (answerpoint[i].val2.length == 3) {
                 $('#res').append('<tr>')
-                $('#res').append('<td>$$'+(i+1)+'$$</td>')
-                $('#res').append('<td>$$E_{pk}('+answerpoint[i].val1+')$$</td>')
+                $('#res').append('<td>$$' + (i + 1) + '$$</td>')
+                $('#res').append('<td>$$E_{pk}(' + answerpoint[i].val1 + ')$$</td>')
 
-                let ss="<td>$$"
-                ss+='SMIN(SSED(E_{pk}(Q),E_{pk}('+Object.keys(answerpoint[i].val2[1])+')),DIST)\\\\'
-                ss+='SMIN(SSED(E_{pk}(Q),E_{pk}('+Object.keys(answerpoint[i].val2[2])+')),DIST)\\\\'
-                if(Object.values(answerpoint[i].val2[1])==0){
-                  ss+='PUSH（E_{pk}('+Object.keys(answerpoint[i].val2[1])+'))\\\\'
+                let ss = "<td>$$"
+                ss += 'SMIN(SSED(E_{pk}(Q),E_{pk}(' + Object.keys(answerpoint[i].val2[1]) + ')),DIST)\\\\'
+                ss += 'SMIN(SSED(E_{pk}(Q),E_{pk}(' + Object.keys(answerpoint[i].val2[2]) + ')),DIST)\\\\'
+                if (Object.values(answerpoint[i].val2[1]) == 0) {
+                  ss += 'PUSH（E_{pk}(' + Object.keys(answerpoint[i].val2[1]) + '))\\\\'
                 }
-                if(Object.values(answerpoint[i].val2[2])==0){
-                  ss+='PUSH（E_{pk}('+Object.keys(answerpoint[i].val2[2])+'))\\\\'
+                if (Object.values(answerpoint[i].val2[2]) == 0) {
+                  ss += 'PUSH（E_{pk}(' + Object.keys(answerpoint[i].val2[2]) + '))\\\\'
                 }
-                ss+="$$</td>"
+                ss += "$$</td>"
                 $('#res').append(ss)
 
-                $('#res').append('<td>$$SSED\\SMIN$$</td>')
-                $('#res').append('<td>$$'+answerpoint[i].val2[0].time+'$$</td>')
+                $('#res').append('<td>$$SSED\\\\SMIN$$</td>')
+                $('#res').append('<td>$$' + answerpoint[i].val2[0].time + '$$</td>')
                 $('#res').append('</tr>')
               }
             }
+
+            $.getScript("https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-MML-AM_CHTML", function () {
+              MathJax.Hub.Config({ tex2jax: { inlineMath: [['_$', '_$'], ['$$', '$$'], ['\\(', '\\)']] } });
+              let math = document.getElementsByClassName("hidden_panel");
+              MathJax.Hub.Queue(["Typeset", MathJax.Hub, math]);
+            });
+
             myChart.setOption(option);
           }
         })
+      })
     })
-  })
 
-    
-  // 基于准备好的dom，初始化echarts实例
-  var myChart = echarts.init(document.getElementById('main'));
 
-  // 指定图表的配置项和数据
-  var option = {
-    tooltip: {
-      formatter: 'Group {a}: ({c})'
-    },
+    // 基于准备好的dom，初始化echarts实例
+    var myChart = echarts.init(document.getElementById('main'));
 
-    xAxis: [{}],
-    yAxis: [{}],
-    series: [
-      {
-        name:'I',
-        symbolSize: 10,
-        data: [
-          [96,94],
-          [164,64],
-          [67,150],
-          [104,190],
-          [190,209],
-          [221,233],
-          [230,307],
-          [200,290],
-          [413,47],
-          [380,95],
-          [566,30],
-          [676,58],
-          [786,104],
-          [750,50],
-          [437,324],
-          [543,267],
-          [470,454],
-          [399,389],
-          [827,394],
-          [753,448],
-          [786,583],
-          [826,513],
-          [957,676],
-          [926,533],
-          [891,785],
-          [757,770],
-          [962,814],
-          [981,773],
-          [595,983],
-          [677,853],
-          [542,892],
-          [476,835],
-          [282,895],
-          [400,950],
-          [185,9],
-          [220,39],
-          [65,570],
-          [100,620],
-          [180,581],
-          [200,600],
-          [70,521],
-          [88,550],
-          [66,380],
-          [160,420],
-          [500,508],
-          [552,562],
-          [806,812],
-          [861,909],
+    // 指定图表的配置项和数据
+    var option = {
+      tooltip: {
+        formatter: 'Group {a}: ({c})'
+      },
 
-        ],
-        type: 'scatter',
-        animationDelay: function(idx) { return idx * 10;},
-        itemStyle: {
-          normal: {
-            color: "#38c92e",
-            lineStyle: {
-              color: "#1673d9"
+      xAxis: [{}],
+      yAxis: [{}],
+      series: [
+        {
+          name: 'I',
+          symbolSize: 10,
+          data: [
+            [96, 94],
+            [164, 64],
+            [67, 150],
+            [104, 190],
+            [190, 209],
+            [221, 233],
+            [230, 307],
+            [200, 290],
+            [413, 47],
+            [380, 95],
+            [566, 30],
+            [676, 58],
+            [786, 104],
+            [750, 50],
+            [437, 324],
+            [543, 267],
+            [470, 454],
+            [399, 389],
+            [827, 394],
+            [753, 448],
+            [786, 583],
+            [826, 513],
+            [957, 676],
+            [926, 533],
+            [891, 785],
+            [757, 770],
+            [962, 814],
+            [981, 773],
+            [595, 983],
+            [677, 853],
+            [542, 892],
+            [476, 835],
+            [282, 895],
+            [400, 950],
+            [185, 9],
+            [220, 39],
+            [65, 570],
+            [100, 620],
+            [180, 581],
+            [200, 600],
+            [70, 521],
+            [88, 550],
+            [66, 380],
+            [160, 420],
+            [500, 508],
+            [552, 562],
+            [806, 812],
+            [861, 909],
+
+          ],
+          type: 'scatter',
+          animationDelay: function (idx) { return idx * 10; },
+          itemStyle: {
+            normal: {
+              color: "#38c92e",
+              lineStyle: {
+                color: "#1673d9"
+              }
             }
           }
-        }
-      },
-      { data: [ [96,64], [96,94]],type:'line',symbol:'none',color: "#38c92e" ,animationDelay: function(idx) { return idx * 10 +2000;},},
-      { data: [ [96,64], [164,64]],type:'line',symbol:'none',color: "#38c92e",animationDelay: function(idx) { return idx * 10 +2000;}},
-      { data: [ [164,94], [96,94]],type:'line',symbol:'none',color: "#38c92e",animationDelay: function(idx) { return idx * 10 +2000;}},
-      { data: [ [164,94], [164,64]],type:'line',symbol:'none',color: "#38c92e",animationDelay: function(idx) { return idx * 10 +2000;}},
-      { data: [ [67,150], [67,190]],type:'line',symbol:'none',color: "#38c92e",animationDelay: function(idx) { return idx * 10 +2000;}},
-      { data: [ [67,150], [104,150]],type:'line',symbol:'none',color: "#38c92e",animationDelay: function(idx) { return idx * 10 +2000;}},
-      { data: [ [104,190], [67,190]],type:'line',symbol:'none',color: "#38c92e",animationDelay: function(idx) { return idx * 10 +2000;}},
-      { data: [ [104,190], [104,150]],type:'line',symbol:'none',color: "#38c92e",animationDelay: function(idx) { return idx * 10 +2000;}},
-      { data: [ [190,209], [190,233]],type:'line',symbol:'none',color: "#38c92e",animationDelay: function(idx) { return idx * 10 +2000;}},
-      { data: [ [190,209], [221,209]],type:'line',symbol:'none',color: "#38c92e",animationDelay: function(idx) { return idx * 10 +2000;}},
-      { data: [ [221,233], [190,233]],type:'line',symbol:'none',color: "#38c92e",animationDelay: function(idx) { return idx * 10 +2000;}},
-      { data: [ [221,233], [221,209]],type:'line',symbol:'none',color: "#38c92e",animationDelay: function(idx) { return idx * 10 +2000;}},
-      { data: [ [200,290], [200,307]],type:'line',symbol:'none',color: "#38c92e",animationDelay: function(idx) { return idx * 10 +2000;}},
-      { data: [ [200,290], [230,290]],type:'line',symbol:'none',color: "#38c92e",animationDelay: function(idx) { return idx * 10 +2000;}},
-      { data: [ [230,307], [200,307]],type:'line',symbol:'none',color: "#38c92e",animationDelay: function(idx) { return idx * 10 +2000;}},
-      { data: [ [230,307], [230,290]],type:'line',symbol:'none',color: "#38c92e",animationDelay: function(idx) { return idx * 10 +2000;}},
-      { data: [ [380,47], [380,95]],type:'line',symbol:'none',color: "#38c92e",animationDelay: function(idx) { return idx * 10 +2000;}},
-      { data: [ [380,47], [413,47]],type:'line',symbol:'none',color: "#38c92e",animationDelay: function(idx) { return idx * 10 +2000;}},
-      { data: [ [413,95], [380,95]],type:'line',symbol:'none',color: "#38c92e",animationDelay: function(idx) { return idx * 10 +2000;}},
-      { data: [ [413,95], [413,47]],type:'line',symbol:'none',color: "#38c92e",animationDelay: function(idx) { return idx * 10 +2000;}},
-      { data: [ [566,30], [566,58]],type:'line',symbol:'none',color: "#38c92e",animationDelay: function(idx) { return idx * 10 +2000;}},
-      { data: [ [566,30], [676,30]],type:'line',symbol:'none',color: "#38c92e",animationDelay: function(idx) { return idx * 10 +2000;}},
-      { data: [ [676,58], [566,58]],type:'line',symbol:'none',color: "#38c92e",animationDelay: function(idx) { return idx * 10 +2000;}},
-      { data: [ [676,58], [676,30]],type:'line',symbol:'none',color: "#38c92e",animationDelay: function(idx) { return idx * 10 +2000;}},
-      { data: [ [750,50], [750,104]],type:'line',symbol:'none',color: "#38c92e",animationDelay: function(idx) { return idx * 10 +2000;}},
-      { data: [ [750,50], [786,50]],type:'line',symbol:'none',color: "#38c92e",animationDelay: function(idx) { return idx * 10 +2000;}},
-      { data: [ [786,104], [750,104]],type:'line',symbol:'none',color: "#38c92e",animationDelay: function(idx) { return idx * 10 +2000;}},
-      { data: [ [786,104], [786,50]],type:'line',symbol:'none',color: "#38c92e",animationDelay: function(idx) { return idx * 10 +2000;}},
-      { data: [ [437,267], [437,324]],type:'line',symbol:'none',color: "#38c92e",animationDelay: function(idx) { return idx * 10 +2000;}},
-      { data: [ [437,267], [543,267]],type:'line',symbol:'none',color: "#38c92e",animationDelay: function(idx) { return idx * 10 +2000;}},
-      { data: [ [543,324], [437,324]],type:'line',symbol:'none',color: "#38c92e",animationDelay: function(idx) { return idx * 10 +2000;}},
-      { data: [ [543,324], [543,267]],type:'line',symbol:'none',color: "#38c92e",animationDelay: function(idx) { return idx * 10 +2000;}},
-      { data: [ [399,389], [399,454]],type:'line',symbol:'none',color: "#38c92e",animationDelay: function(idx) { return idx * 10 +2000;}},
-      { data: [ [399,389], [470,389]],type:'line',symbol:'none',color: "#38c92e",animationDelay: function(idx) { return idx * 10 +2000;}},
-      { data: [ [470,454], [399,454]],type:'line',symbol:'none',color: "#38c92e",animationDelay: function(idx) { return idx * 10 +2000;}},
-      { data: [ [470,454], [470,389]],type:'line',symbol:'none',color: "#38c92e",animationDelay: function(idx) { return idx * 10 +2000;}},
-      { data: [ [753,394], [753,448]],type:'line',symbol:'none',color: "#38c92e",animationDelay: function(idx) { return idx * 10 +2000;}},
-      { data: [ [753,394], [827,394]],type:'line',symbol:'none',color: "#38c92e",animationDelay: function(idx) { return idx * 10 +2000;}},
-      { data: [ [827,448], [753,448]],type:'line',symbol:'none',color: "#38c92e",animationDelay: function(idx) { return idx * 10 +2000;}},
-      { data: [ [827,448], [827,394]],type:'line',symbol:'none',color: "#38c92e",animationDelay: function(idx) { return idx * 10 +2000;}},
-      { data: [ [786,513], [786,583]],type:'line',symbol:'none',color: "#38c92e",animationDelay: function(idx) { return idx * 10 +2000;}},
-      { data: [ [786,513], [826,513]],type:'line',symbol:'none',color: "#38c92e",animationDelay: function(idx) { return idx * 10 +2000;}},
-      { data: [ [826,583], [786,583]],type:'line',symbol:'none',color: "#38c92e",animationDelay: function(idx) { return idx * 10 +2000;}},
-      { data: [ [826,583], [826,513]],type:'line',symbol:'none',color: "#38c92e",animationDelay: function(idx) { return idx * 10 +2000;}},
-      { data: [ [926,533], [926,676]],type:'line',symbol:'none',color: "#38c92e",animationDelay: function(idx) { return idx * 10 +2000;}},
-      { data: [ [926,533], [957,533]],type:'line',symbol:'none',color: "#38c92e",animationDelay: function(idx) { return idx * 10 +2000;}},
-      { data: [ [957,676], [926,676]],type:'line',symbol:'none',color: "#38c92e",animationDelay: function(idx) { return idx * 10 +2000;}},
-      { data: [ [957,676], [957,533]],type:'line',symbol:'none',color: "#38c92e",animationDelay: function(idx) { return idx * 10 +2000;}},
-      { data: [ [757,770], [757,785]],type:'line',symbol:'none',color: "#38c92e",animationDelay: function(idx) { return idx * 10 +2000;}},
-      { data: [ [757,770], [891,770]],type:'line',symbol:'none',color: "#38c92e",animationDelay: function(idx) { return idx * 10 +2000;}},
-      { data: [ [891,785], [757,785]],type:'line',symbol:'none',color: "#38c92e",animationDelay: function(idx) { return idx * 10 +2000;}},
-      { data: [ [891,785], [891,770]],type:'line',symbol:'none',color: "#38c92e",animationDelay: function(idx) { return idx * 10 +2000;}},
-      { data: [ [962,773], [962,814]],type:'line',symbol:'none',color: "#38c92e",animationDelay: function(idx) { return idx * 10 +2000;}},
-      { data: [ [962,773], [981,773]],type:'line',symbol:'none',color: "#38c92e",animationDelay: function(idx) { return idx * 10 +2000;}},
-      { data: [ [981,814], [962,814]],type:'line',symbol:'none',color: "#38c92e",animationDelay: function(idx) { return idx * 10 +2000;}},
-      { data: [ [981,814], [981,773]],type:'line',symbol:'none',color: "#38c92e",animationDelay: function(idx) { return idx * 10 +2000;}},
-      { data: [ [595,853], [595,983]],type:'line',symbol:'none',color: "#38c92e",animationDelay: function(idx) { return idx * 10 +2000;}},
-      { data: [ [595,853], [677,853]],type:'line',symbol:'none',color: "#38c92e",animationDelay: function(idx) { return idx * 10 +2000;}},
-      { data: [ [677,983], [595,983]],type:'line',symbol:'none',color: "#38c92e",animationDelay: function(idx) { return idx * 10 +2000;}},
-      { data: [ [677,983], [677,853]],type:'line',symbol:'none',color: "#38c92e",animationDelay: function(idx) { return idx * 10 +2000;}},
-      { data: [ [476,835], [476,892]],type:'line',symbol:'none',color: "#38c92e",animationDelay: function(idx) { return idx * 10 +2000;}},
-      { data: [ [476,835], [542,835]],type:'line',symbol:'none',color: "#38c92e",animationDelay: function(idx) { return idx * 10 +2000;}},
-      { data: [ [542,892], [476,892]],type:'line',symbol:'none',color: "#38c92e",animationDelay: function(idx) { return idx * 10 +2000;}},
-      { data: [ [542,892], [542,835]],type:'line',symbol:'none',color: "#38c92e",animationDelay: function(idx) { return idx * 10 +2000;}},
-      { data: [ [282,895], [282,950]],type:'line',symbol:'none',color: "#38c92e",animationDelay: function(idx) { return idx * 10 +2000;}},
-      { data: [ [282,895], [400,895]],type:'line',symbol:'none',color: "#38c92e",animationDelay: function(idx) { return idx * 10 +2000;}},
-      { data: [ [400,950], [282,950]],type:'line',symbol:'none',color: "#38c92e",animationDelay: function(idx) { return idx * 10 +2000;}},
-      { data: [ [400,950], [400,895]],type:'line',symbol:'none',color: "#38c92e",animationDelay: function(idx) { return idx * 10 +2000;}},
-      { data: [ [185,9], [185,39]],type:'line',symbol:'none',color: "#38c92e",animationDelay: function(idx) { return idx * 10 +2000;}},
-      { data: [ [185,9], [220,9]],type:'line',symbol:'none',color: "#38c92e",animationDelay: function(idx) { return idx * 10 +2000;}},
-      { data: [ [220,39], [185,39]],type:'line',symbol:'none',color: "#38c92e",animationDelay: function(idx) { return idx * 10 +2000;}},
-      { data: [ [220,39], [220,9]],type:'line',symbol:'none',color: "#38c92e",animationDelay: function(idx) { return idx * 10 +2000;}},
-      { data: [ [65,570], [65,620]],type:'line',symbol:'none',color: "#38c92e",animationDelay: function(idx) { return idx * 10 +2000;}},
-      { data: [ [65,570], [100,570]],type:'line',symbol:'none',color: "#38c92e",animationDelay: function(idx) { return idx * 10 +2000;}},
-      { data: [ [100,620], [65,620]],type:'line',symbol:'none',color: "#38c92e",animationDelay: function(idx) { return idx * 10 +2000;}},
-      { data: [ [100,620], [100,570]],type:'line',symbol:'none',color: "#38c92e",animationDelay: function(idx) { return idx * 10 +2000;}},
-      { data: [ [180,581], [180,600]],type:'line',symbol:'none',color: "#38c92e",animationDelay: function(idx) { return idx * 10 +2000;}},
-      { data: [ [180,581], [200,581]],type:'line',symbol:'none',color: "#38c92e",animationDelay: function(idx) { return idx * 10 +2000;}},
-      { data: [ [200,600], [180,600]],type:'line',symbol:'none',color: "#38c92e",animationDelay: function(idx) { return idx * 10 +2000;}},
-      { data: [ [200,600], [200,581]],type:'line',symbol:'none',color: "#38c92e",animationDelay: function(idx) { return idx * 10 +2000;}},
-      { data: [ [70,521], [70,550]],type:'line',symbol:'none',color: "#38c92e",animationDelay: function(idx) { return idx * 10 +2000;}},
-      { data: [ [70,521], [88,521]],type:'line',symbol:'none',color: "#38c92e",animationDelay: function(idx) { return idx * 10 +2000;}},
-      { data: [ [88,550], [70,550]],type:'line',symbol:'none',color: "#38c92e",animationDelay: function(idx) { return idx * 10 +2000;}},
-      { data: [ [88,550], [88,521]],type:'line',symbol:'none',color: "#38c92e",animationDelay: function(idx) { return idx * 10 +2000;}},
-      { data: [ [66,380], [66,420]],type:'line',symbol:'none',color: "#38c92e",animationDelay: function(idx) { return idx * 10 +2000;}},
-      { data: [ [66,380], [160,380]],type:'line',symbol:'none',color: "#38c92e",animationDelay: function(idx) { return idx * 10 +2000;}},
-      { data: [ [160,420], [66,420]],type:'line',symbol:'none',color: "#38c92e",animationDelay: function(idx) { return idx * 10 +2000;}},
-      { data: [ [160,420], [160,380]],type:'line',symbol:'none',color: "#38c92e",animationDelay: function(idx) { return idx * 10 +2000;}},
-      { data: [ [500,508], [500,562]],type:'line',symbol:'none',color: "#38c92e",animationDelay: function(idx) { return idx * 10 +2000;}},
-      { data: [ [500,508], [552,508]],type:'line',symbol:'none',color: "#38c92e",animationDelay: function(idx) { return idx * 10 +2000;}},
-      { data: [ [552,562], [500,562]],type:'line',symbol:'none',color: "#38c92e",animationDelay: function(idx) { return idx * 10 +2000;}},
-      { data: [ [552,562], [552,508]],type:'line',symbol:'none',color: "#38c92e",animationDelay: function(idx) { return idx * 10 +2000;}},
-      { data: [ [806,812], [806,909]],type:'line',symbol:'none',color: "#38c92e",animationDelay: function(idx) { return idx * 10 +2000;}},
-      { data: [ [806,812], [861,812]],type:'line',symbol:'none',color: "#38c92e",animationDelay: function(idx) { return idx * 10 +2000;}},
-      { data: [ [861,909], [806,909]],type:'line',symbol:'none',color: "#38c92e",animationDelay: function(idx) { return idx * 10 +2000;}},
-      { data: [ [861,909], [861,812]],type:'line',symbol:'none',color: "#38c92e",animationDelay: function(idx) { return idx * 10 +2000;}},
-
-      { data: [ [67,9], [67,190]],type:'line',symbol:'none',color: "#ef4015",animationDelay: function(idx) { return idx * 10 +4000;}},
-      { data: [ [67,9], [220,9]],type:'line',symbol:'none',color: "#ef4015",animationDelay: function(idx) { return idx * 10 +4000;}},
-      { data: [ [220,190], [67,190]],type:'line',symbol:'none',color: "#ef4015",animationDelay: function(idx) { return idx * 10 +4000;}},
-      { data: [ [220,190], [220,9]],type:'line',symbol:'none',color: "#ef4015",animationDelay: function(idx) { return idx * 10 +4000;}},
-      { data: [ [66,209], [66,420]],type:'line',symbol:'none',color: "#ef4015",animationDelay: function(idx) { return idx * 10 +4000;}},
-      { data: [ [66,209], [230,209]],type:'line',symbol:'none',color: "#ef4015",animationDelay: function(idx) { return idx * 10 +4000;}},
-      { data: [ [230,420], [66,420]],type:'line',symbol:'none',color: "#ef4015",animationDelay: function(idx) { return idx * 10 +4000;}},
-      { data: [ [230,420], [230,209]],type:'line',symbol:'none',color: "#ef4015",animationDelay: function(idx) { return idx * 10 +4000;}},
-      { data: [ [65,521], [65,620]],type:'line',symbol:'none',color: "#ef4015",animationDelay: function(idx) { return idx * 10 +4000;}},
-      { data: [ [65,521], [200,521]],type:'line',symbol:'none',color: "#ef4015",animationDelay: function(idx) { return idx * 10 +4000;}},
-      { data: [ [200,620], [65,620]],type:'line',symbol:'none',color: "#ef4015",animationDelay: function(idx) { return idx * 10 +4000;}},
-      { data: [ [200,620], [200,521]],type:'line',symbol:'none',color: "#ef4015",animationDelay: function(idx) { return idx * 10 +4000;}},
-      { data: [ [399,267], [399,562]],type:'line',symbol:'none',color: "#ef4015",animationDelay: function(idx) { return idx * 10 +4000;}},
-      { data: [ [399,267], [552,267]],type:'line',symbol:'none',color: "#ef4015",animationDelay: function(idx) { return idx * 10 +4000;}},
-      { data: [ [552,562], [399,562]],type:'line',symbol:'none',color: "#ef4015",animationDelay: function(idx) { return idx * 10 +4000;}},
-      { data: [ [552,562], [552,267]],type:'line',symbol:'none',color: "#ef4015",animationDelay: function(idx) { return idx * 10 +4000;}},
-      { data: [ [753,394], [753,676]],type:'line',symbol:'none',color: "#ef4015",animationDelay: function(idx) { return idx * 10 +4000;}},
-      { data: [ [753,394], [957,394]],type:'line',symbol:'none',color: "#ef4015",animationDelay: function(idx) { return idx * 10 +4000;}},
-      { data: [ [957,676], [753,676]],type:'line',symbol:'none',color: "#ef4015",animationDelay: function(idx) { return idx * 10 +4000;}},
-      { data: [ [957,676], [957,394]],type:'line',symbol:'none',color: "#ef4015",animationDelay: function(idx) { return idx * 10 +4000;}},
-      { data: [ [282,835], [282,983]],type:'line',symbol:'none',color: "#ef4015",animationDelay: function(idx) { return idx * 10 +4000;}},
-      { data: [ [282,835], [677,835]],type:'line',symbol:'none',color: "#ef4015",animationDelay: function(idx) { return idx * 10 +4000;}},
-      { data: [ [677,983], [282,983]],type:'line',symbol:'none',color: "#ef4015",animationDelay: function(idx) { return idx * 10 +4000;}},
-      { data: [ [677,983], [677,835]],type:'line',symbol:'none',color: "#ef4015",animationDelay: function(idx) { return idx * 10 +4000;}},
-      { data: [ [757,770], [757,909]],type:'line',symbol:'none',color: "#ef4015",animationDelay: function(idx) { return idx * 10 +4000;}},
-      { data: [ [757,770], [981,770]],type:'line',symbol:'none',color: "#ef4015",animationDelay: function(idx) { return idx * 10 +4000;}},
-      { data: [ [981,909], [757,909]],type:'line',symbol:'none',color: "#ef4015",animationDelay: function(idx) { return idx * 10 +4000;}},
-      { data: [ [981,909], [981,770]],type:'line',symbol:'none',color: "#ef4015",animationDelay: function(idx) { return idx * 10 +4000;}},
-      { data: [ [753,394], [753,676]],type:'line',symbol:'none',color: "#ef4015",animationDelay: function(idx) { return idx * 10 +4000;}},
-      { data: [ [753,394], [957,394]],type:'line',symbol:'none',color: "#ef4015",animationDelay: function(idx) { return idx * 10 +4000;}},
-      { data: [ [957,676], [753,676]],type:'line',symbol:'none',color: "#ef4015",animationDelay: function(idx) { return idx * 10 +4000;}},
-      { data: [ [957,676], [957,394]],type:'line',symbol:'none',color: "#ef4015",animationDelay: function(idx) { return idx * 10 +4000;}},
-      { data: [ [380,30], [380,104]],type:'line',symbol:'none',color: "#ef4015",animationDelay: function(idx) { return idx * 10 +4000;}},
-      { data: [ [380,30], [789,30]],type:'line',symbol:'none',color: "#ef4015",animationDelay: function(idx) { return idx * 10 +4000;}},
-      { data: [ [789,104], [380,104]],type:'line',symbol:'none',color: "#ef4015",animationDelay: function(idx) { return idx * 10 +4000;}},
-      { data: [ [789,104], [789,30]],type:'line',symbol:'none',color: "#ef4015",animationDelay: function(idx) { return idx * 10 +4000;}},
-
-      { data: [ [66,9], [66,620]],type:'line',symbol:'none',color: "#1673d9",animationDelay: function(idx) { return idx * 10 +6000;}},
-      { data: [ [66,9], [230,9]],type:'line',symbol:'none',color: "#1673d9",animationDelay: function(idx) { return idx * 10 +6000;}},
-      { data: [ [230,620], [66,620]],type:'line',symbol:'none',color: "#1673d9",animationDelay: function(idx) { return idx * 10 +6000;}},
-      { data: [ [230,620], [230,9]],type:'line',symbol:'none',color: "#1673d9",animationDelay: function(idx) { return idx * 10 +6000;}},
-      { data: [ [380,30], [380,676]],type:'line',symbol:'none',color: "#1673d9",animationDelay: function(idx) { return idx * 10 +6000;}},
-      { data: [ [380,30], [957,30]],type:'line',symbol:'none',color: "#1673d9",animationDelay: function(idx) { return idx * 10 +6000;}},
-      { data: [ [957,676], [380,676]],type:'line',symbol:'none',color: "#1673d9",animationDelay: function(idx) { return idx * 10 +6000;}},
-      { data: [ [957,676], [957,30]],type:'line',symbol:'none',color: "#1673d9",animationDelay: function(idx) { return idx * 10 +6000;}},
-      { data: [ [282,770], [282,983]],type:'line',symbol:'none',color: "#1673d9",animationDelay: function(idx) { return idx * 10 +6000;}},
-      { data: [ [282,770], [981,770]],type:'line',symbol:'none',color: "#1673d9",animationDelay: function(idx) { return idx * 10 +6000;}},
-      { data: [ [981,983], [282,983]],type:'line',symbol:'none',color: "#1673d9",animationDelay: function(idx) { return idx * 10 +6000;}},
-      { data: [ [981,983], [981,770]],type:'line',symbol:'none',color: "#1673d9",animationDelay: function(idx) { return idx * 10 +6000;}},
-
-      { data: [ [66,9], [66,983]],type:'line',symbol:'none',color: "#020202",animationDelay: function(idx) { return idx * 10 +8000;}},
-      { data: [ [66,9], [981,9]],type:'line',symbol:'none',color: "#020202",animationDelay: function(idx) { return idx * 10 +8000;}},
-      { data: [ [981,983], [66,983]],type:'line',symbol:'none',color: "#020202",animationDelay: function(idx) { return idx * 10 +8000;}},
-      { data: [ [981,983], [981,9]],type:'line',symbol:'none',color: "#020202",animationDelay: function(idx) { return idx * 10 +8000;}},
-      {label: {show:true,position:"top",formatter: 'P0'},data: [[96,94]],type:'scatter',symbolSize: 1,color: "#38c92e"},
-      {label: {show:true,position:"top",formatter: 'P1'},data: [[164,64]],type:'scatter',symbolSize: 1,color: "#38c92e"},
-      {label: {show:true,position:"top",formatter: 'P2'},data: [[67,150]],type:'scatter',symbolSize: 1,color: "#38c92e"},
-      {label: {show:true,position:"top",formatter: 'P3'},data: [[104,190]],type:'scatter',symbolSize: 1,color: "#38c92e"},
-      {label: {show:true,position:"top",formatter: 'P4'},data: [[190,209]],type:'scatter',symbolSize: 1,color: "#38c92e"},
-      {label: {show:true,position:"top",formatter: 'P5'},data: [[221,233]],type:'scatter',symbolSize: 1,color: "#38c92e"},
-      {label: {show:true,position:"top",formatter: 'P6'},data: [[230,307]],type:'scatter',symbolSize: 1,color: "#38c92e"},
-      {label: {show:true,position:"top",formatter: 'P7'},data: [[200,290]],type:'scatter',symbolSize: 1,color: "#38c92e"},
-      {label: {show:true,position:"top",formatter: 'P8'},data: [[413,47]],type:'scatter',symbolSize: 1,color: "#38c92e"},
-      {label: {show:true,position:"top",formatter: 'P9'},data: [[380,95]],type:'scatter',symbolSize: 1,color: "#38c92e"},
-      {label: {show:true,position:"top",formatter: 'P10'},data: [[566,30]],type:'scatter',symbolSize: 1,color: "#38c92e"},
-      {label: {show:true,position:"top",formatter: 'P11'},data: [[676,58]],type:'scatter',symbolSize: 1,color: "#38c92e"},
-      {label: {show:true,position:"top",formatter: 'P12'},data: [[789,104]],type:'scatter',symbolSize: 1,color: "#38c92e"},
-      {label: {show:true,position:"top",formatter: 'P13'},data: [[750,50]],type:'scatter',symbolSize: 1,color: "#38c92e"},
-      {label: {show:true,position:"top",formatter: 'P14'},data: [[437,324]],type:'scatter',symbolSize: 1,color: "#38c92e"},
-      {label: {show:true,position:"top",formatter: 'P15'},data: [[543,267]],type:'scatter',symbolSize: 1,color: "#38c92e"},
-      {label: {show:true,position:"top",formatter: 'P16'},data: [[470,454]],type:'scatter',symbolSize: 1,color: "#38c92e"},
-      {label: {show:true,position:"top",formatter: 'P17'},data: [[399,389]],type:'scatter',symbolSize: 1,color: "#38c92e"},
-      {label: {show:true,position:"top",formatter: 'P18'},data: [[827,394]],type:'scatter',symbolSize: 1,color: "#38c92e"},
-      {label: {show:true,position:"top",formatter: 'P19'},data: [[753,448]],type:'scatter',symbolSize: 1,color: "#38c92e"},
-      {label: {show:true,position:"top",formatter: 'P20'},data: [[786,583]],type:'scatter',symbolSize: 1,color: "#38c92e"},
-      {label: {show:true,position:"top",formatter: 'P21'},data: [[826,513]],type:'scatter',symbolSize: 1,color: "#38c92e"},
-      {label: {show:true,position:"top",formatter: 'P22'},data: [[957,676]],type:'scatter',symbolSize: 1,color: "#38c92e"},
-      {label: {show:true,position:"top",formatter: 'P23'},data: [[923,533]],type:'scatter',symbolSize: 1,color: "#38c92e"},
-      {label: {show:true,position:"top",formatter: 'P24'},data: [[891,785]],type:'scatter',symbolSize: 1,color: "#38c92e"},
-      {label: {show:true,position:"top",formatter: 'P25'},data: [[757,770]],type:'scatter',symbolSize: 1,color: "#38c92e"},
-      {label: {show:true,position:"top",formatter: 'P26'},data: [[962,814]],type:'scatter',symbolSize: 1,color: "#38c92e"},
-      {label: {show:true,position:"top",formatter: 'P27'},data: [[981,773]],type:'scatter',symbolSize: 1,color: "#38c92e"},
-      {label: {show:true,position:"top",formatter: 'P28'},data: [[595,983]],type:'scatter',symbolSize: 1,color: "#38c92e"},
-      {label: {show:true,position:"top",formatter: 'P29'},data: [[677,853]],type:'scatter',symbolSize: 1,color: "#38c92e"},
-      {label: {show:true,position:"top",formatter: 'P30'},data: [[542,892]],type:'scatter',symbolSize: 1,color: "#38c92e"},
-      {label: {show:true,position:"top",formatter: 'P31'},data: [[476,835]],type:'scatter',symbolSize: 1,color: "#38c92e"},
-      {label: {show:true,position:"top",formatter: 'P32'},data: [[282,895]],type:'scatter',symbolSize: 1,color: "#38c92e"},
-      {label: {show:true,position:"top",formatter: 'P33'},data: [[400,950]],type:'scatter',symbolSize: 1,color: "#38c92e"},
-      {label: {show:true,position:"top",formatter: 'P34'},data: [[185,9]],type:'scatter',symbolSize: 1,color: "#38c92e"},
-      {label: {show:true,position:"top",formatter: 'P35'},data: [[220,39]],type:'scatter',symbolSize: 1,color: "#38c92e"},
-      {label: {show:true,position:"top",formatter: 'P36'},data: [[65,570]],type:'scatter',symbolSize: 1,color: "#38c92e"},
-      {label: {show:true,position:"top",formatter: 'P37'},data: [[100,620]],type:'scatter',symbolSize: 1,color: "#38c92e"},
-      {label: {show:true,position:"top",formatter: 'P38'},data: [[180,581]],type:'scatter',symbolSize: 1,color: "#38c92e"},
-      {label: {show:true,position:"top",formatter: 'P39'},data: [[200,600]],type:'scatter',symbolSize: 1,color: "#38c92e"},
-      {label: {show:true,position:"top",formatter: 'P40'},data: [[70,521]],type:'scatter',symbolSize: 1,color: "#38c92e"},
-      {label: {show:true,position:"top",formatter: 'P41'},data: [[88,550]],type:'scatter',symbolSize: 1,color: "#38c92e"},
-      {label: {show:true,position:"top",formatter: 'P42'},data: [[66,380]],type:'scatter',symbolSize: 1,color: "#38c92e"},
-      {label: {show:true,position:"top",formatter: 'P43'},data: [[160,420]],type:'scatter',symbolSize: 1,color: "#38c92e"},
-      {label: {show:true,position:"top",formatter: 'P44'},data: [[500,508]],type:'scatter',symbolSize: 1,color: "#38c92e"},
-      {label: {show:true,position:"top",formatter: 'P45'},data: [[552,562]],type:'scatter',symbolSize: 1,color: "#38c92e"},
-      {label: {show:true,position:"top",formatter: 'P46'},data: [[806,812]],type:'scatter',symbolSize: 1,color: "#38c92e"},
-      {label: {show:true,position:"top",formatter: 'P47'},data: [[861,909]],type:'scatter',symbolSize: 1,color: "#38c92e"},
-      {
-        label: {
-          show:true,
-          position:"right",
-          formatter: 'Q'
         },
-        name:'query point',
-        symbolSize: 20,
-        data: [
-          q
-          // [600,200]
-          /*todo: 更改Q*/
+        { data: [[96, 64], [96, 94]], type: 'line', symbol: 'none', color: "#38c92e", animationDelay: function (idx) { return idx * 10 + 2000; }, },
+        { data: [[96, 64], [164, 64]], type: 'line', symbol: 'none', color: "#38c92e", animationDelay: function (idx) { return idx * 10 + 2000; } },
+        { data: [[164, 94], [96, 94]], type: 'line', symbol: 'none', color: "#38c92e", animationDelay: function (idx) { return idx * 10 + 2000; } },
+        { data: [[164, 94], [164, 64]], type: 'line', symbol: 'none', color: "#38c92e", animationDelay: function (idx) { return idx * 10 + 2000; } },
+        { data: [[67, 150], [67, 190]], type: 'line', symbol: 'none', color: "#38c92e", animationDelay: function (idx) { return idx * 10 + 2000; } },
+        { data: [[67, 150], [104, 150]], type: 'line', symbol: 'none', color: "#38c92e", animationDelay: function (idx) { return idx * 10 + 2000; } },
+        { data: [[104, 190], [67, 190]], type: 'line', symbol: 'none', color: "#38c92e", animationDelay: function (idx) { return idx * 10 + 2000; } },
+        { data: [[104, 190], [104, 150]], type: 'line', symbol: 'none', color: "#38c92e", animationDelay: function (idx) { return idx * 10 + 2000; } },
+        { data: [[190, 209], [190, 233]], type: 'line', symbol: 'none', color: "#38c92e", animationDelay: function (idx) { return idx * 10 + 2000; } },
+        { data: [[190, 209], [221, 209]], type: 'line', symbol: 'none', color: "#38c92e", animationDelay: function (idx) { return idx * 10 + 2000; } },
+        { data: [[221, 233], [190, 233]], type: 'line', symbol: 'none', color: "#38c92e", animationDelay: function (idx) { return idx * 10 + 2000; } },
+        { data: [[221, 233], [221, 209]], type: 'line', symbol: 'none', color: "#38c92e", animationDelay: function (idx) { return idx * 10 + 2000; } },
+        { data: [[200, 290], [200, 307]], type: 'line', symbol: 'none', color: "#38c92e", animationDelay: function (idx) { return idx * 10 + 2000; } },
+        { data: [[200, 290], [230, 290]], type: 'line', symbol: 'none', color: "#38c92e", animationDelay: function (idx) { return idx * 10 + 2000; } },
+        { data: [[230, 307], [200, 307]], type: 'line', symbol: 'none', color: "#38c92e", animationDelay: function (idx) { return idx * 10 + 2000; } },
+        { data: [[230, 307], [230, 290]], type: 'line', symbol: 'none', color: "#38c92e", animationDelay: function (idx) { return idx * 10 + 2000; } },
+        { data: [[380, 47], [380, 95]], type: 'line', symbol: 'none', color: "#38c92e", animationDelay: function (idx) { return idx * 10 + 2000; } },
+        { data: [[380, 47], [413, 47]], type: 'line', symbol: 'none', color: "#38c92e", animationDelay: function (idx) { return idx * 10 + 2000; } },
+        { data: [[413, 95], [380, 95]], type: 'line', symbol: 'none', color: "#38c92e", animationDelay: function (idx) { return idx * 10 + 2000; } },
+        { data: [[413, 95], [413, 47]], type: 'line', symbol: 'none', color: "#38c92e", animationDelay: function (idx) { return idx * 10 + 2000; } },
+        { data: [[566, 30], [566, 58]], type: 'line', symbol: 'none', color: "#38c92e", animationDelay: function (idx) { return idx * 10 + 2000; } },
+        { data: [[566, 30], [676, 30]], type: 'line', symbol: 'none', color: "#38c92e", animationDelay: function (idx) { return idx * 10 + 2000; } },
+        { data: [[676, 58], [566, 58]], type: 'line', symbol: 'none', color: "#38c92e", animationDelay: function (idx) { return idx * 10 + 2000; } },
+        { data: [[676, 58], [676, 30]], type: 'line', symbol: 'none', color: "#38c92e", animationDelay: function (idx) { return idx * 10 + 2000; } },
+        { data: [[750, 50], [750, 104]], type: 'line', symbol: 'none', color: "#38c92e", animationDelay: function (idx) { return idx * 10 + 2000; } },
+        { data: [[750, 50], [786, 50]], type: 'line', symbol: 'none', color: "#38c92e", animationDelay: function (idx) { return idx * 10 + 2000; } },
+        { data: [[786, 104], [750, 104]], type: 'line', symbol: 'none', color: "#38c92e", animationDelay: function (idx) { return idx * 10 + 2000; } },
+        { data: [[786, 104], [786, 50]], type: 'line', symbol: 'none', color: "#38c92e", animationDelay: function (idx) { return idx * 10 + 2000; } },
+        { data: [[437, 267], [437, 324]], type: 'line', symbol: 'none', color: "#38c92e", animationDelay: function (idx) { return idx * 10 + 2000; } },
+        { data: [[437, 267], [543, 267]], type: 'line', symbol: 'none', color: "#38c92e", animationDelay: function (idx) { return idx * 10 + 2000; } },
+        { data: [[543, 324], [437, 324]], type: 'line', symbol: 'none', color: "#38c92e", animationDelay: function (idx) { return idx * 10 + 2000; } },
+        { data: [[543, 324], [543, 267]], type: 'line', symbol: 'none', color: "#38c92e", animationDelay: function (idx) { return idx * 10 + 2000; } },
+        { data: [[399, 389], [399, 454]], type: 'line', symbol: 'none', color: "#38c92e", animationDelay: function (idx) { return idx * 10 + 2000; } },
+        { data: [[399, 389], [470, 389]], type: 'line', symbol: 'none', color: "#38c92e", animationDelay: function (idx) { return idx * 10 + 2000; } },
+        { data: [[470, 454], [399, 454]], type: 'line', symbol: 'none', color: "#38c92e", animationDelay: function (idx) { return idx * 10 + 2000; } },
+        { data: [[470, 454], [470, 389]], type: 'line', symbol: 'none', color: "#38c92e", animationDelay: function (idx) { return idx * 10 + 2000; } },
+        { data: [[753, 394], [753, 448]], type: 'line', symbol: 'none', color: "#38c92e", animationDelay: function (idx) { return idx * 10 + 2000; } },
+        { data: [[753, 394], [827, 394]], type: 'line', symbol: 'none', color: "#38c92e", animationDelay: function (idx) { return idx * 10 + 2000; } },
+        { data: [[827, 448], [753, 448]], type: 'line', symbol: 'none', color: "#38c92e", animationDelay: function (idx) { return idx * 10 + 2000; } },
+        { data: [[827, 448], [827, 394]], type: 'line', symbol: 'none', color: "#38c92e", animationDelay: function (idx) { return idx * 10 + 2000; } },
+        { data: [[786, 513], [786, 583]], type: 'line', symbol: 'none', color: "#38c92e", animationDelay: function (idx) { return idx * 10 + 2000; } },
+        { data: [[786, 513], [826, 513]], type: 'line', symbol: 'none', color: "#38c92e", animationDelay: function (idx) { return idx * 10 + 2000; } },
+        { data: [[826, 583], [786, 583]], type: 'line', symbol: 'none', color: "#38c92e", animationDelay: function (idx) { return idx * 10 + 2000; } },
+        { data: [[826, 583], [826, 513]], type: 'line', symbol: 'none', color: "#38c92e", animationDelay: function (idx) { return idx * 10 + 2000; } },
+        { data: [[926, 533], [926, 676]], type: 'line', symbol: 'none', color: "#38c92e", animationDelay: function (idx) { return idx * 10 + 2000; } },
+        { data: [[926, 533], [957, 533]], type: 'line', symbol: 'none', color: "#38c92e", animationDelay: function (idx) { return idx * 10 + 2000; } },
+        { data: [[957, 676], [926, 676]], type: 'line', symbol: 'none', color: "#38c92e", animationDelay: function (idx) { return idx * 10 + 2000; } },
+        { data: [[957, 676], [957, 533]], type: 'line', symbol: 'none', color: "#38c92e", animationDelay: function (idx) { return idx * 10 + 2000; } },
+        { data: [[757, 770], [757, 785]], type: 'line', symbol: 'none', color: "#38c92e", animationDelay: function (idx) { return idx * 10 + 2000; } },
+        { data: [[757, 770], [891, 770]], type: 'line', symbol: 'none', color: "#38c92e", animationDelay: function (idx) { return idx * 10 + 2000; } },
+        { data: [[891, 785], [757, 785]], type: 'line', symbol: 'none', color: "#38c92e", animationDelay: function (idx) { return idx * 10 + 2000; } },
+        { data: [[891, 785], [891, 770]], type: 'line', symbol: 'none', color: "#38c92e", animationDelay: function (idx) { return idx * 10 + 2000; } },
+        { data: [[962, 773], [962, 814]], type: 'line', symbol: 'none', color: "#38c92e", animationDelay: function (idx) { return idx * 10 + 2000; } },
+        { data: [[962, 773], [981, 773]], type: 'line', symbol: 'none', color: "#38c92e", animationDelay: function (idx) { return idx * 10 + 2000; } },
+        { data: [[981, 814], [962, 814]], type: 'line', symbol: 'none', color: "#38c92e", animationDelay: function (idx) { return idx * 10 + 2000; } },
+        { data: [[981, 814], [981, 773]], type: 'line', symbol: 'none', color: "#38c92e", animationDelay: function (idx) { return idx * 10 + 2000; } },
+        { data: [[595, 853], [595, 983]], type: 'line', symbol: 'none', color: "#38c92e", animationDelay: function (idx) { return idx * 10 + 2000; } },
+        { data: [[595, 853], [677, 853]], type: 'line', symbol: 'none', color: "#38c92e", animationDelay: function (idx) { return idx * 10 + 2000; } },
+        { data: [[677, 983], [595, 983]], type: 'line', symbol: 'none', color: "#38c92e", animationDelay: function (idx) { return idx * 10 + 2000; } },
+        { data: [[677, 983], [677, 853]], type: 'line', symbol: 'none', color: "#38c92e", animationDelay: function (idx) { return idx * 10 + 2000; } },
+        { data: [[476, 835], [476, 892]], type: 'line', symbol: 'none', color: "#38c92e", animationDelay: function (idx) { return idx * 10 + 2000; } },
+        { data: [[476, 835], [542, 835]], type: 'line', symbol: 'none', color: "#38c92e", animationDelay: function (idx) { return idx * 10 + 2000; } },
+        { data: [[542, 892], [476, 892]], type: 'line', symbol: 'none', color: "#38c92e", animationDelay: function (idx) { return idx * 10 + 2000; } },
+        { data: [[542, 892], [542, 835]], type: 'line', symbol: 'none', color: "#38c92e", animationDelay: function (idx) { return idx * 10 + 2000; } },
+        { data: [[282, 895], [282, 950]], type: 'line', symbol: 'none', color: "#38c92e", animationDelay: function (idx) { return idx * 10 + 2000; } },
+        { data: [[282, 895], [400, 895]], type: 'line', symbol: 'none', color: "#38c92e", animationDelay: function (idx) { return idx * 10 + 2000; } },
+        { data: [[400, 950], [282, 950]], type: 'line', symbol: 'none', color: "#38c92e", animationDelay: function (idx) { return idx * 10 + 2000; } },
+        { data: [[400, 950], [400, 895]], type: 'line', symbol: 'none', color: "#38c92e", animationDelay: function (idx) { return idx * 10 + 2000; } },
+        { data: [[185, 9], [185, 39]], type: 'line', symbol: 'none', color: "#38c92e", animationDelay: function (idx) { return idx * 10 + 2000; } },
+        { data: [[185, 9], [220, 9]], type: 'line', symbol: 'none', color: "#38c92e", animationDelay: function (idx) { return idx * 10 + 2000; } },
+        { data: [[220, 39], [185, 39]], type: 'line', symbol: 'none', color: "#38c92e", animationDelay: function (idx) { return idx * 10 + 2000; } },
+        { data: [[220, 39], [220, 9]], type: 'line', symbol: 'none', color: "#38c92e", animationDelay: function (idx) { return idx * 10 + 2000; } },
+        { data: [[65, 570], [65, 620]], type: 'line', symbol: 'none', color: "#38c92e", animationDelay: function (idx) { return idx * 10 + 2000; } },
+        { data: [[65, 570], [100, 570]], type: 'line', symbol: 'none', color: "#38c92e", animationDelay: function (idx) { return idx * 10 + 2000; } },
+        { data: [[100, 620], [65, 620]], type: 'line', symbol: 'none', color: "#38c92e", animationDelay: function (idx) { return idx * 10 + 2000; } },
+        { data: [[100, 620], [100, 570]], type: 'line', symbol: 'none', color: "#38c92e", animationDelay: function (idx) { return idx * 10 + 2000; } },
+        { data: [[180, 581], [180, 600]], type: 'line', symbol: 'none', color: "#38c92e", animationDelay: function (idx) { return idx * 10 + 2000; } },
+        { data: [[180, 581], [200, 581]], type: 'line', symbol: 'none', color: "#38c92e", animationDelay: function (idx) { return idx * 10 + 2000; } },
+        { data: [[200, 600], [180, 600]], type: 'line', symbol: 'none', color: "#38c92e", animationDelay: function (idx) { return idx * 10 + 2000; } },
+        { data: [[200, 600], [200, 581]], type: 'line', symbol: 'none', color: "#38c92e", animationDelay: function (idx) { return idx * 10 + 2000; } },
+        { data: [[70, 521], [70, 550]], type: 'line', symbol: 'none', color: "#38c92e", animationDelay: function (idx) { return idx * 10 + 2000; } },
+        { data: [[70, 521], [88, 521]], type: 'line', symbol: 'none', color: "#38c92e", animationDelay: function (idx) { return idx * 10 + 2000; } },
+        { data: [[88, 550], [70, 550]], type: 'line', symbol: 'none', color: "#38c92e", animationDelay: function (idx) { return idx * 10 + 2000; } },
+        { data: [[88, 550], [88, 521]], type: 'line', symbol: 'none', color: "#38c92e", animationDelay: function (idx) { return idx * 10 + 2000; } },
+        { data: [[66, 380], [66, 420]], type: 'line', symbol: 'none', color: "#38c92e", animationDelay: function (idx) { return idx * 10 + 2000; } },
+        { data: [[66, 380], [160, 380]], type: 'line', symbol: 'none', color: "#38c92e", animationDelay: function (idx) { return idx * 10 + 2000; } },
+        { data: [[160, 420], [66, 420]], type: 'line', symbol: 'none', color: "#38c92e", animationDelay: function (idx) { return idx * 10 + 2000; } },
+        { data: [[160, 420], [160, 380]], type: 'line', symbol: 'none', color: "#38c92e", animationDelay: function (idx) { return idx * 10 + 2000; } },
+        { data: [[500, 508], [500, 562]], type: 'line', symbol: 'none', color: "#38c92e", animationDelay: function (idx) { return idx * 10 + 2000; } },
+        { data: [[500, 508], [552, 508]], type: 'line', symbol: 'none', color: "#38c92e", animationDelay: function (idx) { return idx * 10 + 2000; } },
+        { data: [[552, 562], [500, 562]], type: 'line', symbol: 'none', color: "#38c92e", animationDelay: function (idx) { return idx * 10 + 2000; } },
+        { data: [[552, 562], [552, 508]], type: 'line', symbol: 'none', color: "#38c92e", animationDelay: function (idx) { return idx * 10 + 2000; } },
+        { data: [[806, 812], [806, 909]], type: 'line', symbol: 'none', color: "#38c92e", animationDelay: function (idx) { return idx * 10 + 2000; } },
+        { data: [[806, 812], [861, 812]], type: 'line', symbol: 'none', color: "#38c92e", animationDelay: function (idx) { return idx * 10 + 2000; } },
+        { data: [[861, 909], [806, 909]], type: 'line', symbol: 'none', color: "#38c92e", animationDelay: function (idx) { return idx * 10 + 2000; } },
+        { data: [[861, 909], [861, 812]], type: 'line', symbol: 'none', color: "#38c92e", animationDelay: function (idx) { return idx * 10 + 2000; } },
 
-        ],
-        type: 'scatter',
-        animationDelay: function(idx) { return idx * 10;},
-        itemStyle: {
-          normal: {
-            color: "#1b9bde",
-            lineStyle: {
-              color: "#2ec7c9"
+        { data: [[67, 9], [67, 190]], type: 'line', symbol: 'none', color: "#ef4015", animationDelay: function (idx) { return idx * 10 + 4000; } },
+        { data: [[67, 9], [220, 9]], type: 'line', symbol: 'none', color: "#ef4015", animationDelay: function (idx) { return idx * 10 + 4000; } },
+        { data: [[220, 190], [67, 190]], type: 'line', symbol: 'none', color: "#ef4015", animationDelay: function (idx) { return idx * 10 + 4000; } },
+        { data: [[220, 190], [220, 9]], type: 'line', symbol: 'none', color: "#ef4015", animationDelay: function (idx) { return idx * 10 + 4000; } },
+        { data: [[66, 209], [66, 420]], type: 'line', symbol: 'none', color: "#ef4015", animationDelay: function (idx) { return idx * 10 + 4000; } },
+        { data: [[66, 209], [230, 209]], type: 'line', symbol: 'none', color: "#ef4015", animationDelay: function (idx) { return idx * 10 + 4000; } },
+        { data: [[230, 420], [66, 420]], type: 'line', symbol: 'none', color: "#ef4015", animationDelay: function (idx) { return idx * 10 + 4000; } },
+        { data: [[230, 420], [230, 209]], type: 'line', symbol: 'none', color: "#ef4015", animationDelay: function (idx) { return idx * 10 + 4000; } },
+        { data: [[65, 521], [65, 620]], type: 'line', symbol: 'none', color: "#ef4015", animationDelay: function (idx) { return idx * 10 + 4000; } },
+        { data: [[65, 521], [200, 521]], type: 'line', symbol: 'none', color: "#ef4015", animationDelay: function (idx) { return idx * 10 + 4000; } },
+        { data: [[200, 620], [65, 620]], type: 'line', symbol: 'none', color: "#ef4015", animationDelay: function (idx) { return idx * 10 + 4000; } },
+        { data: [[200, 620], [200, 521]], type: 'line', symbol: 'none', color: "#ef4015", animationDelay: function (idx) { return idx * 10 + 4000; } },
+        { data: [[399, 267], [399, 562]], type: 'line', symbol: 'none', color: "#ef4015", animationDelay: function (idx) { return idx * 10 + 4000; } },
+        { data: [[399, 267], [552, 267]], type: 'line', symbol: 'none', color: "#ef4015", animationDelay: function (idx) { return idx * 10 + 4000; } },
+        { data: [[552, 562], [399, 562]], type: 'line', symbol: 'none', color: "#ef4015", animationDelay: function (idx) { return idx * 10 + 4000; } },
+        { data: [[552, 562], [552, 267]], type: 'line', symbol: 'none', color: "#ef4015", animationDelay: function (idx) { return idx * 10 + 4000; } },
+        { data: [[753, 394], [753, 676]], type: 'line', symbol: 'none', color: "#ef4015", animationDelay: function (idx) { return idx * 10 + 4000; } },
+        { data: [[753, 394], [957, 394]], type: 'line', symbol: 'none', color: "#ef4015", animationDelay: function (idx) { return idx * 10 + 4000; } },
+        { data: [[957, 676], [753, 676]], type: 'line', symbol: 'none', color: "#ef4015", animationDelay: function (idx) { return idx * 10 + 4000; } },
+        { data: [[957, 676], [957, 394]], type: 'line', symbol: 'none', color: "#ef4015", animationDelay: function (idx) { return idx * 10 + 4000; } },
+        { data: [[282, 835], [282, 983]], type: 'line', symbol: 'none', color: "#ef4015", animationDelay: function (idx) { return idx * 10 + 4000; } },
+        { data: [[282, 835], [677, 835]], type: 'line', symbol: 'none', color: "#ef4015", animationDelay: function (idx) { return idx * 10 + 4000; } },
+        { data: [[677, 983], [282, 983]], type: 'line', symbol: 'none', color: "#ef4015", animationDelay: function (idx) { return idx * 10 + 4000; } },
+        { data: [[677, 983], [677, 835]], type: 'line', symbol: 'none', color: "#ef4015", animationDelay: function (idx) { return idx * 10 + 4000; } },
+        { data: [[757, 770], [757, 909]], type: 'line', symbol: 'none', color: "#ef4015", animationDelay: function (idx) { return idx * 10 + 4000; } },
+        { data: [[757, 770], [981, 770]], type: 'line', symbol: 'none', color: "#ef4015", animationDelay: function (idx) { return idx * 10 + 4000; } },
+        { data: [[981, 909], [757, 909]], type: 'line', symbol: 'none', color: "#ef4015", animationDelay: function (idx) { return idx * 10 + 4000; } },
+        { data: [[981, 909], [981, 770]], type: 'line', symbol: 'none', color: "#ef4015", animationDelay: function (idx) { return idx * 10 + 4000; } },
+        { data: [[753, 394], [753, 676]], type: 'line', symbol: 'none', color: "#ef4015", animationDelay: function (idx) { return idx * 10 + 4000; } },
+        { data: [[753, 394], [957, 394]], type: 'line', symbol: 'none', color: "#ef4015", animationDelay: function (idx) { return idx * 10 + 4000; } },
+        { data: [[957, 676], [753, 676]], type: 'line', symbol: 'none', color: "#ef4015", animationDelay: function (idx) { return idx * 10 + 4000; } },
+        { data: [[957, 676], [957, 394]], type: 'line', symbol: 'none', color: "#ef4015", animationDelay: function (idx) { return idx * 10 + 4000; } },
+        { data: [[380, 30], [380, 104]], type: 'line', symbol: 'none', color: "#ef4015", animationDelay: function (idx) { return idx * 10 + 4000; } },
+        { data: [[380, 30], [789, 30]], type: 'line', symbol: 'none', color: "#ef4015", animationDelay: function (idx) { return idx * 10 + 4000; } },
+        { data: [[789, 104], [380, 104]], type: 'line', symbol: 'none', color: "#ef4015", animationDelay: function (idx) { return idx * 10 + 4000; } },
+        { data: [[789, 104], [789, 30]], type: 'line', symbol: 'none', color: "#ef4015", animationDelay: function (idx) { return idx * 10 + 4000; } },
+
+        { data: [[66, 9], [66, 620]], type: 'line', symbol: 'none', color: "#1673d9", animationDelay: function (idx) { return idx * 10 + 6000; } },
+        { data: [[66, 9], [230, 9]], type: 'line', symbol: 'none', color: "#1673d9", animationDelay: function (idx) { return idx * 10 + 6000; } },
+        { data: [[230, 620], [66, 620]], type: 'line', symbol: 'none', color: "#1673d9", animationDelay: function (idx) { return idx * 10 + 6000; } },
+        { data: [[230, 620], [230, 9]], type: 'line', symbol: 'none', color: "#1673d9", animationDelay: function (idx) { return idx * 10 + 6000; } },
+        { data: [[380, 30], [380, 676]], type: 'line', symbol: 'none', color: "#1673d9", animationDelay: function (idx) { return idx * 10 + 6000; } },
+        { data: [[380, 30], [957, 30]], type: 'line', symbol: 'none', color: "#1673d9", animationDelay: function (idx) { return idx * 10 + 6000; } },
+        { data: [[957, 676], [380, 676]], type: 'line', symbol: 'none', color: "#1673d9", animationDelay: function (idx) { return idx * 10 + 6000; } },
+        { data: [[957, 676], [957, 30]], type: 'line', symbol: 'none', color: "#1673d9", animationDelay: function (idx) { return idx * 10 + 6000; } },
+        { data: [[282, 770], [282, 983]], type: 'line', symbol: 'none', color: "#1673d9", animationDelay: function (idx) { return idx * 10 + 6000; } },
+        { data: [[282, 770], [981, 770]], type: 'line', symbol: 'none', color: "#1673d9", animationDelay: function (idx) { return idx * 10 + 6000; } },
+        { data: [[981, 983], [282, 983]], type: 'line', symbol: 'none', color: "#1673d9", animationDelay: function (idx) { return idx * 10 + 6000; } },
+        { data: [[981, 983], [981, 770]], type: 'line', symbol: 'none', color: "#1673d9", animationDelay: function (idx) { return idx * 10 + 6000; } },
+
+        { data: [[66, 9], [66, 983]], type: 'line', symbol: 'none', color: "#020202", animationDelay: function (idx) { return idx * 10 + 8000; } },
+        { data: [[66, 9], [981, 9]], type: 'line', symbol: 'none', color: "#020202", animationDelay: function (idx) { return idx * 10 + 8000; } },
+        { data: [[981, 983], [66, 983]], type: 'line', symbol: 'none', color: "#020202", animationDelay: function (idx) { return idx * 10 + 8000; } },
+        { data: [[981, 983], [981, 9]], type: 'line', symbol: 'none', color: "#020202", animationDelay: function (idx) { return idx * 10 + 8000; } },
+        { label: { show: true, position: "top", formatter: 'P0' }, data: [[96, 94]], type: 'scatter', symbolSize: 1, color: "#38c92e" },
+        { label: { show: true, position: "top", formatter: 'P1' }, data: [[164, 64]], type: 'scatter', symbolSize: 1, color: "#38c92e" },
+        { label: { show: true, position: "top", formatter: 'P2' }, data: [[67, 150]], type: 'scatter', symbolSize: 1, color: "#38c92e" },
+        { label: { show: true, position: "top", formatter: 'P3' }, data: [[104, 190]], type: 'scatter', symbolSize: 1, color: "#38c92e" },
+        { label: { show: true, position: "top", formatter: 'P4' }, data: [[190, 209]], type: 'scatter', symbolSize: 1, color: "#38c92e" },
+        { label: { show: true, position: "top", formatter: 'P5' }, data: [[221, 233]], type: 'scatter', symbolSize: 1, color: "#38c92e" },
+        { label: { show: true, position: "top", formatter: 'P6' }, data: [[230, 307]], type: 'scatter', symbolSize: 1, color: "#38c92e" },
+        { label: { show: true, position: "top", formatter: 'P7' }, data: [[200, 290]], type: 'scatter', symbolSize: 1, color: "#38c92e" },
+        { label: { show: true, position: "top", formatter: 'P8' }, data: [[413, 47]], type: 'scatter', symbolSize: 1, color: "#38c92e" },
+        { label: { show: true, position: "top", formatter: 'P9' }, data: [[380, 95]], type: 'scatter', symbolSize: 1, color: "#38c92e" },
+        { label: { show: true, position: "top", formatter: 'P10' }, data: [[566, 30]], type: 'scatter', symbolSize: 1, color: "#38c92e" },
+        { label: { show: true, position: "top", formatter: 'P11' }, data: [[676, 58]], type: 'scatter', symbolSize: 1, color: "#38c92e" },
+        { label: { show: true, position: "top", formatter: 'P12' }, data: [[789, 104]], type: 'scatter', symbolSize: 1, color: "#38c92e" },
+        { label: { show: true, position: "top", formatter: 'P13' }, data: [[750, 50]], type: 'scatter', symbolSize: 1, color: "#38c92e" },
+        { label: { show: true, position: "top", formatter: 'P14' }, data: [[437, 324]], type: 'scatter', symbolSize: 1, color: "#38c92e" },
+        { label: { show: true, position: "top", formatter: 'P15' }, data: [[543, 267]], type: 'scatter', symbolSize: 1, color: "#38c92e" },
+        { label: { show: true, position: "top", formatter: 'P16' }, data: [[470, 454]], type: 'scatter', symbolSize: 1, color: "#38c92e" },
+        { label: { show: true, position: "top", formatter: 'P17' }, data: [[399, 389]], type: 'scatter', symbolSize: 1, color: "#38c92e" },
+        { label: { show: true, position: "top", formatter: 'P18' }, data: [[827, 394]], type: 'scatter', symbolSize: 1, color: "#38c92e" },
+        { label: { show: true, position: "top", formatter: 'P19' }, data: [[753, 448]], type: 'scatter', symbolSize: 1, color: "#38c92e" },
+        { label: { show: true, position: "top", formatter: 'P20' }, data: [[786, 583]], type: 'scatter', symbolSize: 1, color: "#38c92e" },
+        { label: { show: true, position: "top", formatter: 'P21' }, data: [[826, 513]], type: 'scatter', symbolSize: 1, color: "#38c92e" },
+        { label: { show: true, position: "top", formatter: 'P22' }, data: [[957, 676]], type: 'scatter', symbolSize: 1, color: "#38c92e" },
+        { label: { show: true, position: "top", formatter: 'P23' }, data: [[923, 533]], type: 'scatter', symbolSize: 1, color: "#38c92e" },
+        { label: { show: true, position: "top", formatter: 'P24' }, data: [[891, 785]], type: 'scatter', symbolSize: 1, color: "#38c92e" },
+        { label: { show: true, position: "top", formatter: 'P25' }, data: [[757, 770]], type: 'scatter', symbolSize: 1, color: "#38c92e" },
+        { label: { show: true, position: "top", formatter: 'P26' }, data: [[962, 814]], type: 'scatter', symbolSize: 1, color: "#38c92e" },
+        { label: { show: true, position: "top", formatter: 'P27' }, data: [[981, 773]], type: 'scatter', symbolSize: 1, color: "#38c92e" },
+        { label: { show: true, position: "top", formatter: 'P28' }, data: [[595, 983]], type: 'scatter', symbolSize: 1, color: "#38c92e" },
+        { label: { show: true, position: "top", formatter: 'P29' }, data: [[677, 853]], type: 'scatter', symbolSize: 1, color: "#38c92e" },
+        { label: { show: true, position: "top", formatter: 'P30' }, data: [[542, 892]], type: 'scatter', symbolSize: 1, color: "#38c92e" },
+        { label: { show: true, position: "top", formatter: 'P31' }, data: [[476, 835]], type: 'scatter', symbolSize: 1, color: "#38c92e" },
+        { label: { show: true, position: "top", formatter: 'P32' }, data: [[282, 895]], type: 'scatter', symbolSize: 1, color: "#38c92e" },
+        { label: { show: true, position: "top", formatter: 'P33' }, data: [[400, 950]], type: 'scatter', symbolSize: 1, color: "#38c92e" },
+        { label: { show: true, position: "top", formatter: 'P34' }, data: [[185, 9]], type: 'scatter', symbolSize: 1, color: "#38c92e" },
+        { label: { show: true, position: "top", formatter: 'P35' }, data: [[220, 39]], type: 'scatter', symbolSize: 1, color: "#38c92e" },
+        { label: { show: true, position: "top", formatter: 'P36' }, data: [[65, 570]], type: 'scatter', symbolSize: 1, color: "#38c92e" },
+        { label: { show: true, position: "top", formatter: 'P37' }, data: [[100, 620]], type: 'scatter', symbolSize: 1, color: "#38c92e" },
+        { label: { show: true, position: "top", formatter: 'P38' }, data: [[180, 581]], type: 'scatter', symbolSize: 1, color: "#38c92e" },
+        { label: { show: true, position: "top", formatter: 'P39' }, data: [[200, 600]], type: 'scatter', symbolSize: 1, color: "#38c92e" },
+        { label: { show: true, position: "top", formatter: 'P40' }, data: [[70, 521]], type: 'scatter', symbolSize: 1, color: "#38c92e" },
+        { label: { show: true, position: "top", formatter: 'P41' }, data: [[88, 550]], type: 'scatter', symbolSize: 1, color: "#38c92e" },
+        { label: { show: true, position: "top", formatter: 'P42' }, data: [[66, 380]], type: 'scatter', symbolSize: 1, color: "#38c92e" },
+        { label: { show: true, position: "top", formatter: 'P43' }, data: [[160, 420]], type: 'scatter', symbolSize: 1, color: "#38c92e" },
+        { label: { show: true, position: "top", formatter: 'P44' }, data: [[500, 508]], type: 'scatter', symbolSize: 1, color: "#38c92e" },
+        { label: { show: true, position: "top", formatter: 'P45' }, data: [[552, 562]], type: 'scatter', symbolSize: 1, color: "#38c92e" },
+        { label: { show: true, position: "top", formatter: 'P46' }, data: [[806, 812]], type: 'scatter', symbolSize: 1, color: "#38c92e" },
+        { label: { show: true, position: "top", formatter: 'P47' }, data: [[861, 909]], type: 'scatter', symbolSize: 1, color: "#38c92e" },
+        {
+          label: {
+            show: true,
+            position: "right",
+            formatter: 'Q'
+          },
+          name: 'query point',
+          symbolSize: 20,
+          data: [
+            q
+            // [600,200]
+            /*todo: 更改Q*/
+
+          ],
+          type: 'scatter',
+          animationDelay: function (idx) { return idx * 10; },
+          itemStyle: {
+            normal: {
+              color: "#1b9bde",
+              lineStyle: {
+                color: "#2ec7c9"
+              }
             }
           }
-        }
-      },
+        },
 
-      {name: 'rectangle',label: {show:true,position:"top",formatter: 'R4'},data: [[500,50]],type:'scatter',symbolSize: 0.0001,color: "#ef4015"},
-      {name: 'rectangle',label: {show:true,position:"top",formatter: 'R3'},data: [[500,400]],type:'scatter',symbolSize: 0.0001,color: "#ef4015"},
-      {name: 'rectangle',label: {show:true,position:"top",formatter: 'R0'},data: [[700,300]],type:'scatter',symbolSize: 0.0001,color: "#ef4015"},
-      {name: 'rectangle',label: {show:true,position:"top",formatter: 'R5'},data: [[900,500]],type:'scatter',symbolSize: 0.0001,color: "#ef4015"},
-      {name: 'rectangle',label: {show:true,position:"top",formatter: 'R1'},data: [[600,780]],type:'scatter',symbolSize: 0.0001,color: "#ef4015"},
-      {name: 'rectangle',label: {show:true,position:"top",formatter: 'R2'},data: [[150,470]],type:'scatter',symbolSize: 0.0001,color: "#ef4015"},
-      {name: 'rectangle',label: {show:true,position:"top",formatter: 'R6'},data: [[500,280]],type:'scatter',symbolSize: 0.0001,color: "#ef4015"},
-      {name: 'rectangle',label: {show:true,position:"top",formatter: 'R7'},data: [[430,400]],type:'scatter',symbolSize: 0.0001,color: "#ef4015"},
-      {name: 'rectangle',label: {show:true,position:"top",formatter: 'R8'},data: [[530,520]],type:'scatter',symbolSize: 0.0001,color: "#ef4015"},
-      {name: 'rectangle',label: {show:true,position:"top",formatter: 'R9'},data: [[780,420]],type:'scatter',symbolSize: 0.0001,color: "#ef4015"},
-        {name: 'rectangle',label: {show:true,position:"top",formatter: 'R10'},data: [[800,550]],type:'scatter',symbolSize: 0.0001,color: "#ef4015"},
-        {name: 'rectangle',label: {show:true,position:"top",formatter: 'R11'},data: [[930,600]],type:'scatter',symbolSize: 0.0001,color: "#ef4015"},
-        {name: 'rectangle',label: {show:true,position:"top",formatter: 'R12'},data: [[390,60]],type:'scatter',symbolSize: 0.0001,color: "#ef4015"},
-        {name: 'rectangle',label: {show:true,position:"top",formatter: 'R13'},data: [[620,20]],type:'scatter',symbolSize: 0.0001,color: "#ef4015"},
-        {name: 'rectangle',label: {show:true,position:"top",formatter: 'R14'},data: [[770,60]],type:'scatter',symbolSize: 0.0001,color: "#ef4015"},
-        {name: 'rectangle',label: {show:true,position:"top",formatter: 'R15'},data: [[150,150]],type:'scatter',symbolSize: 0.0001,color: "#ef4015"},
-        {name: 'rectangle',label: {show:true,position:"top",formatter: 'R16'},data: [[150,320]],type:'scatter',symbolSize: 0.0001,color: "#ef4015"},
-        {name: 'rectangle',label: {show:true,position:"top",formatter: 'R17'},data: [[150,520]],type:'scatter',symbolSize: 0.0001,color: "#ef4015"},
-        {name: 'rectangle',label: {show:true,position:"top",formatter: 'R18'},data: [[70,190]],type:'scatter',symbolSize: 0.0001,color: "#ef4015"},
-        {name: 'rectangle',label: {show:true,position:"top",formatter: 'R19'},data: [[120,80]],type:'scatter',symbolSize: 0.0001,color: "#ef4015"},
-        {name: 'rectangle',label: {show:true,position:"top",formatter: 'R20'},data: [[200,30]],type:'scatter',symbolSize: 0.0001,color: "#ef4015"},
-        {name: 'rectangle',label: {show:true,position:"top",formatter: 'R21'},data: [[100,400]],type:'scatter',symbolSize: 0.0001,color: "#ef4015"},
-        {name: 'rectangle',label: {show:true,position:"top",formatter: 'R22'},data: [[200,210]],type:'scatter',symbolSize: 0.0001,color: "#ef4015"},
-        {name: 'rectangle',label: {show:true,position:"top",formatter: 'R23'},data: [[200,300]],type:'scatter',symbolSize: 0.0001,color: "#ef4015"},
-        {name: 'rectangle',label: {show:true,position:"top",formatter: 'R24'},data: [[70,600]],type:'scatter',symbolSize: 0.0001,color: "#ef4015"},
-         {name: 'rectangle',label: {show:true,position:"top",formatter: 'R25'},data: [[70,530]],type:'scatter',symbolSize: 0.0001,color: "#ef4015"},
-        {name: 'rectangle',label: {show:true,position:"top",formatter: 'R26'},data: [[200,590]],type:'scatter',symbolSize: 0.0001,color: "#ef4015"},
-        {name: 'rectangle',label: {show:true,position:"top",formatter: 'R27'},data: [[500,900]],type:'scatter',symbolSize: 0.0001,color: "#ef4015"},
-        {name: 'rectangle',label: {show:true,position:"top",formatter: 'R28'},data: [[900,870]],type:'scatter',symbolSize: 0.0001,color: "#ef4015"},
-        {name: 'rectangle',label: {show:true,position:"top",formatter: 'R30'},data: [[350,900]],type:'scatter',symbolSize: 0.0001,color: "#ef4015"},
-         {name: 'rectangle',label: {show:true,position:"top",formatter: 'R31'},data: [[500,850]],type:'scatter',symbolSize: 0.0001,color: "#ef4015"},
-         {name: 'rectangle',label: {show:true,position:"top",formatter: 'R32'},data: [[630,900]],type:'scatter',symbolSize: 0.0001,color: "#ef4015"},
-         {name: 'rectangle',label: {show:true,position:"top",formatter: 'R33'},data: [[840,870]],type:'scatter',symbolSize: 0.0001,color: "#ef4015"},
-         {name: 'rectangle',label: {show:true,position:"top",formatter: 'R34'},data: [[800,770]],type:'scatter',symbolSize: 0.0001,color: "#ef4015"},
-         {name: 'rectangle',label: {show:true,position:"top",formatter: 'R35'},data: [[970,790]],type:'scatter',symbolSize: 0.0001,color: "#ef4015"},
-
+        { name: 'rectangle', label: { show: true, position: "top", formatter: 'R4' }, data: [[500, 50]], type: 'scatter', symbolSize: 0.0001, color: "#ef4015" },
+        { name: 'rectangle', label: { show: true, position: "top", formatter: 'R3' }, data: [[500, 400]], type: 'scatter', symbolSize: 0.0001, color: "#ef4015" },
+        { name: 'rectangle', label: { show: true, position: "top", formatter: 'R0' }, data: [[700, 300]], type: 'scatter', symbolSize: 0.0001, color: "#ef4015" },
+        { name: 'rectangle', label: { show: true, position: "top", formatter: 'R5' }, data: [[900, 500]], type: 'scatter', symbolSize: 0.0001, color: "#ef4015" },
+        { name: 'rectangle', label: { show: true, position: "top", formatter: 'R1' }, data: [[600, 780]], type: 'scatter', symbolSize: 0.0001, color: "#ef4015" },
+        { name: 'rectangle', label: { show: true, position: "top", formatter: 'R2' }, data: [[150, 470]], type: 'scatter', symbolSize: 0.0001, color: "#ef4015" },
+        { name: 'rectangle', label: { show: true, position: "top", formatter: 'R6' }, data: [[500, 280]], type: 'scatter', symbolSize: 0.0001, color: "#ef4015" },
+        { name: 'rectangle', label: { show: true, position: "top", formatter: 'R7' }, data: [[430, 400]], type: 'scatter', symbolSize: 0.0001, color: "#ef4015" },
+        { name: 'rectangle', label: { show: true, position: "top", formatter: 'R8' }, data: [[530, 520]], type: 'scatter', symbolSize: 0.0001, color: "#ef4015" },
+        { name: 'rectangle', label: { show: true, position: "top", formatter: 'R9' }, data: [[780, 420]], type: 'scatter', symbolSize: 0.0001, color: "#ef4015" },
+        { name: 'rectangle', label: { show: true, position: "top", formatter: 'R10' }, data: [[800, 550]], type: 'scatter', symbolSize: 0.0001, color: "#ef4015" },
+        { name: 'rectangle', label: { show: true, position: "top", formatter: 'R11' }, data: [[930, 600]], type: 'scatter', symbolSize: 0.0001, color: "#ef4015" },
+        { name: 'rectangle', label: { show: true, position: "top", formatter: 'R12' }, data: [[390, 60]], type: 'scatter', symbolSize: 0.0001, color: "#ef4015" },
+        { name: 'rectangle', label: { show: true, position: "top", formatter: 'R13' }, data: [[620, 20]], type: 'scatter', symbolSize: 0.0001, color: "#ef4015" },
+        { name: 'rectangle', label: { show: true, position: "top", formatter: 'R14' }, data: [[770, 60]], type: 'scatter', symbolSize: 0.0001, color: "#ef4015" },
+        { name: 'rectangle', label: { show: true, position: "top", formatter: 'R15' }, data: [[150, 150]], type: 'scatter', symbolSize: 0.0001, color: "#ef4015" },
+        { name: 'rectangle', label: { show: true, position: "top", formatter: 'R16' }, data: [[150, 320]], type: 'scatter', symbolSize: 0.0001, color: "#ef4015" },
+        { name: 'rectangle', label: { show: true, position: "top", formatter: 'R17' }, data: [[150, 520]], type: 'scatter', symbolSize: 0.0001, color: "#ef4015" },
+        { name: 'rectangle', label: { show: true, position: "top", formatter: 'R18' }, data: [[70, 190]], type: 'scatter', symbolSize: 0.0001, color: "#ef4015" },
+        { name: 'rectangle', label: { show: true, position: "top", formatter: 'R19' }, data: [[120, 80]], type: 'scatter', symbolSize: 0.0001, color: "#ef4015" },
+        { name: 'rectangle', label: { show: true, position: "top", formatter: 'R20' }, data: [[200, 30]], type: 'scatter', symbolSize: 0.0001, color: "#ef4015" },
+        { name: 'rectangle', label: { show: true, position: "top", formatter: 'R21' }, data: [[100, 400]], type: 'scatter', symbolSize: 0.0001, color: "#ef4015" },
+        { name: 'rectangle', label: { show: true, position: "top", formatter: 'R22' }, data: [[200, 210]], type: 'scatter', symbolSize: 0.0001, color: "#ef4015" },
+        { name: 'rectangle', label: { show: true, position: "top", formatter: 'R23' }, data: [[200, 300]], type: 'scatter', symbolSize: 0.0001, color: "#ef4015" },
+        { name: 'rectangle', label: { show: true, position: "top", formatter: 'R24' }, data: [[70, 600]], type: 'scatter', symbolSize: 0.0001, color: "#ef4015" },
+        { name: 'rectangle', label: { show: true, position: "top", formatter: 'R25' }, data: [[70, 530]], type: 'scatter', symbolSize: 0.0001, color: "#ef4015" },
+        { name: 'rectangle', label: { show: true, position: "top", formatter: 'R26' }, data: [[200, 590]], type: 'scatter', symbolSize: 0.0001, color: "#ef4015" },
+        { name: 'rectangle', label: { show: true, position: "top", formatter: 'R27' }, data: [[500, 900]], type: 'scatter', symbolSize: 0.0001, color: "#ef4015" },
+        { name: 'rectangle', label: { show: true, position: "top", formatter: 'R28' }, data: [[900, 870]], type: 'scatter', symbolSize: 0.0001, color: "#ef4015" },
+        { name: 'rectangle', label: { show: true, position: "top", formatter: 'R30' }, data: [[350, 900]], type: 'scatter', symbolSize: 0.0001, color: "#ef4015" },
+        { name: 'rectangle', label: { show: true, position: "top", formatter: 'R31' }, data: [[500, 850]], type: 'scatter', symbolSize: 0.0001, color: "#ef4015" },
+        { name: 'rectangle', label: { show: true, position: "top", formatter: 'R32' }, data: [[630, 900]], type: 'scatter', symbolSize: 0.0001, color: "#ef4015" },
+        { name: 'rectangle', label: { show: true, position: "top", formatter: 'R33' }, data: [[840, 870]], type: 'scatter', symbolSize: 0.0001, color: "#ef4015" },
+        { name: 'rectangle', label: { show: true, position: "top", formatter: 'R34' }, data: [[800, 770]], type: 'scatter', symbolSize: 0.0001, color: "#ef4015" },
+        { name: 'rectangle', label: { show: true, position: "top", formatter: 'R35' }, data: [[970, 790]], type: 'scatter', symbolSize: 0.0001, color: "#ef4015" },
 
 
 
@@ -644,11 +645,13 @@ tex2jax: {inlineMath: [['$','$'], ['(',')']]}
 
 
 
-    ]
-  };
 
-  // 使用刚指定的配置项和数据显示图表。
-  myChart.setOption(option);
-</script>
+      ]
+    };
+
+    // 使用刚指定的配置项和数据显示图表。
+    myChart.setOption(option);
+  </script>
 </body>
+
 </html>
