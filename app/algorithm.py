@@ -76,11 +76,11 @@ class BinaryTree:
             arrs.pop(0)
             zindex = int(arrs[0])
             self.index.append(p[zindex])
-            self.child.append("P_("+str(zindex)+")")
+            self.child.append("P_{"+str(zindex)+"}")
             arrs.pop(0)
             zindex = int(arrs[0])
             self.index.append(p[zindex])
-            self.child.append("P_("+str(zindex)+")")
+            self.child.append("P_{"+str(zindex)+"}")
             arrs.pop(0)
             return
         else:
@@ -246,16 +246,16 @@ class BinaryTree:
 
 def sknn(qx, qy, k,length):
     arr = ['Root', 'R_0', 'R_3', 'R_6', '*', '14', '15', 'null', 'null', ' R_7 ', '*', '16', '17', 'null',
-           'null', 'R_8', '*', '44', '45', 'null', 'null', 'R_4', 'R_(12)', '*', '8', '9', 'null', 'null', 'R_(13)',
-           '*', '10', '11', 'null', 'null', 'R_(14)', '*', '12', '13', 'null', 'null', 'R_5', 'R_9', '*', '18',
+           'null', 'R_8', '*', '44', '45', 'null', 'null', 'R_4', 'R_{12}', '*', '8', '9', 'null', 'null', 'R_{13}',
+           '*', '10', '11', 'null', 'null', 'R_{14}', '*', '12', '13', 'null', 'null', 'R_5', 'R_9', '*', '18',
            '19', 'null', 'null', 'R_10', '*', '20', '21', 'null', 'null', 'R_11', '*', '22', '23', 'null', 'null',
-           'R_1', 'R_(27)', 'R_(30)', '*', '32', '33', 'null', 'null', 'R_(31)', '*', '30', '31', 'null', 'null',
-           'R_(32)', '*', '28', '29', 'null', 'null', 'R_(28)', 'R_(33)', '*', '46', '47', 'null', 'null', 'R_(34)',
-           '*', '24', '25', 'null', 'null', 'R_(35)', '*', '26', '27', 'null', 'null', 'null', 'R_2', 'R_(15)',
-           'R_(18)', '*', '2', '3', 'null', 'null', 'R_(19)', '*', '0', '1', 'null', 'null', 'R_(20)', '*', '34', '35',
-           'null', 'null', 'R_(16)', 'R_(21)', '*', '42', '43', 'null', 'null', 'R_(22)', '*', '4', '5', 'null',
-           'null', 'R_(23)', '*', '6', '7', 'null', 'null', 'R_(17)', 'R_(24)', '*', '36', '37', 'null', 'null',
-           'R_(25)', '*', '41', '40', 'null', 'null', 'R_(26)', '*', '38', '39', 'null', 'null']
+           'R_1', 'R_{27}', 'R_{30}', '*', '32', '33', 'null', 'null', 'R_{31}', '*', '30', '31', 'null', 'null',
+           'R_{32}', '*', '28', '29', 'null', 'null', 'R_{28}', 'R_{33}', '*', '46', '47', 'null', 'null', 'R_{34}',
+           '*', '24', '25', 'null', 'null', 'R_{35}', '*', '26', '27', 'null', 'null', 'null', 'R_2', 'R_{15}',
+           'R_{18}', '*', '2', '3', 'null', 'null', 'R_{19}', '*', '0', '1', 'null', 'null', 'R_{20}', '*', '34', '35',
+           'null', 'null', 'R_{16}', 'R_{21}', '*', '42', '43', 'null', 'null', 'R_{22}', '*', '4', '5', 'null',
+           'null', 'R_{23}', '*', '6', '7', 'null', 'null', 'R_{17}', 'R_{24}', '*', '36', '37', 'null', 'null',
+           'R_{25}', '*', '41', '40', 'null', 'null', 'R_{26}', '*', '38', '39', 'null', 'null']
     newkeypair.generate_keypair(length)
     pk = phe.PaillierPublicKey(n=int(pd.read_pickle(newkeypair.PUBLIC_KEY_PATH).loc['n'][0]))
     a = BinaryTree()
