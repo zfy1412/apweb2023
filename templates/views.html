@@ -25,44 +25,53 @@
         <div class="col-3 text-center mx-auto bg-white bg-opacity-25 rounded-3 shadow-lg">
 
           <div class="my-3 bg-white bg-opacity-50">
-            <h1 class="display-4">Advanced Protocal</h1>
-            <div class="p-4 ">
-              <div id="advanced" class="list-group list-group-flush bg-white bg-opacity-50 rounded-3 border-0">
-                <a href="#" id="SSPLD" class="list-group-item list-group-item-action"><h2 class="display-6 text-secondary">SSPLD</h2></a>
-                <a href="#" id="SSED" class="list-group-item list-group-item-action"><h2 class="display-6 text-secondary">SSED</h2></a>
-                <a href="#" id="SGD" class="list-group-item list-group-item-action"><h2 class="display-6 text-secondary">SGD</h2></a>
-                <a href="#" id="SSD" class="list-group-item list-group-item-action"><h2 class="display-6 text-secondary">SSD</h2></a>
-                <a href="#" id="SD" class="list-group-item list-group-item-action"><h2 class="display-6 text-secondary">SD</h2></a>
-              </div>
+            <h1 class="display-5">Advanced Protocals</h1>
+              <div class="p-4 ">
+                <div class="dropdown dropend">
+                  <a href="#" class="list-group-item list-group-item-action dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false"><h2 class="display-6 text-secondary">MENU</h2></a>
+                  <ul id="advanced" class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                    <li><a id="SSPLD"  class="dropdown-item" href="#"><h4>SSPLD<h4></a></li>
+                    <li><a id="SSED" class="dropdown-item" href="#"><h4>SSED<h4></a></li>
+                      <li><a id="SD" class="dropdown-item" href="#"><h4>SDOM<h4></a></li>
+                    <li><a id="SGD" class="dropdown-item" href="#"><h4>SGDOM<h4></a></li>
+                  </ul>
+              </div> 
             </div>
-            
           </div>
 
           <div class="my-3 bg-white bg-opacity-50">
-            <h1 class="display-4">Basic Protocal</h1>
+            <h1 class="display-5">Basic Protocals</h1>
             <div class="p-4"> 
 
               <div class="dropdown dropend">
-                <a href="#" class="list-group-item list-group-item-action dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false"><h2 class="display-6 text-secondary">MENU</h2></a>
-                <ul id="basic" class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                  <li><a id="SP"  class="dropdown-item" href="#"><h4>SP<h4></a></li>
+                <a href="#" class="list-group-item list-group-item-action dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false"><small class="text-secondary" style="word-break:break-all;">Secure Arithmetic Computation Protocals</small></a>
+                <ul id="b1" class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                  <li><a id="SDC"  class="dropdown-item" href="#"><h4>SDC<h4></a></li>
+                  <li><a id="SMIN" class="dropdown-item" href="#"><h4>SMIN<h4></a></li>
+                  <li><a id="SM" class="dropdown-item" href="#"><h4>SM<h4></a></li>
+                  <li><a id="SMAX" class="dropdown-item" href="#"><h4>SMAX<h4></a></li>
+                </ul>
+              </div> 
+
+              <div class="dropdown dropend">
+                <a href="#" class="list-group-item list-group-item-action dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false"><small class="text-secondary">Secure Comparison Protocals</small></a>
+                <ul id="b2" class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
                   <li><a id="SEQ"  class="dropdown-item" href="#"><h4>SEQ<h4></a></li>
                   <li><a id="SLESS" class="dropdown-item" href="#"><h4>SLESS<h4></a></li>
-                  <li><a id="SM" class="dropdown-item" href="#"><h4>SM<h4></a></li>
-                  <li><a id="SMIN" class="dropdown-item" href="#"><h4>SMIN<h4></a></li>
-                  <li><a id="SNOT" class="dropdown-item" href="#"><h4>SNOT<h4></a></li>
-                  <li><a id="SBD" class="dropdown-item" href="#"><h4>SBD<h4></a></li>
-                  <li><a id="SOR" class="dropdown-item" href="#"><h4>SOR<h4></a></li>
-                  <li><a id="SAND" class="dropdown-item" href="#"><h4>SAND<h4></a></li>
-                  <li><a id="SNE" class="dropdown-item" href="#"><h4>SNE<h4></a></li>
                   <li><a id="SLEQ" class="dropdown-item" href="#"><h4>SLEQ<h4></a></li>
-                  <li><a id="SDC" class="dropdown-item" href="#"><h4>SDC<h4></a></li>
-                  <li><a id="SMAX" class="dropdown-item" href="#"><h4>SMAX<h4></a></li>
-                  <li><a id="SNAND" class="dropdown-item" href="#"><h4>SNAND<h4></a></li>
-                  <li><a id="SGE" class="dropdown-item" href="#"><h4>SGE<h4></a></li>
-                  <li><a id="SG" class="dropdown-item" href="#"><h4>SG<h4></a></li>
+                  <li><a id="SNEQ" class="dropdown-item" href="#"><h4>SNEQ<h4></a></li>
                 </ul>
-              </div>
+              </div> 
+
+              <div class="dropdown dropend">
+                <a href="#" class="list-group-item list-group-item-action dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false"><small class="text-secondary">Secure Bit Computation Protocals</small></a>
+                <ul id="b3" class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                  <li><a id="SNOT"  class="dropdown-item" href="#"><h4>SNOT<h4></a></li>
+                  <li><a id="SBD" class="dropdown-item" href="#"><h4>SBD<h4></a></li>
+                  <li><a id="SAND" class="dropdown-item" href="#"><h4>SAND<h4></a></li>
+                  <li><a id="SBOR" class="dropdown-item" href="#"><h4>SBOR<h4></a></li>
+                </ul>
+              </div> 
 
             </div>
           </div>
@@ -80,18 +89,29 @@
   </main>
   <script>
     $(document).ready(function () {
-      $('#advanced').children("a").click(function(){
-        let s ='../static/resource/'+$(this).text()+'.jpg'//改成svg
+      $('#advanced').children("li").click(function(){
+        let s ='../static/resource/'+$(this).text()+'.jpg'
         console.log(s)
         $("img").attr("src",s)
         
       })
 
-      $('#basic').children("li").children("a").click(function(){
-        let s ='../static/resource/'+$(this).text()+'.jpg'//改成svg
+      $('#b1').children("li").click(function(){
+        let s ='../static/resource/'+$(this).text()+'.jpg'
         console.log(s)
-        $("img").attr("src",s)
-        
+        $("img").attr("src",s) 
+      })
+
+      $('#b2').children("li").click(function(){
+        let s ='../static/resource/'+$(this).text()+'.jpg'
+        console.log(s)
+        $("img").attr("src",s) 
+      })
+
+      $('#b3').children("li").click(function(){
+        let s ='../static/resource/'+$(this).text()+'.jpg'
+        console.log(s)
+        $("img").attr("src",s) 
       })
 
     })
