@@ -87,13 +87,13 @@ def calculation(request):
         cr = n1 * n2
     elif ptc == 'SDC':
         cr = n1 / n2
-    elif ptc == 'Max':
+    elif ptc == 'SMAX':
         cr = n1.optimum(n2, 'max')
-    elif ptc == 'Min':
+    elif ptc == 'SMIN':
         cr = n1.optimum(n2, 'min')
     elif ptc == 'Parity':
         cr = n1.parity()
-    elif ptc == 'Bit-Dec':
+    elif ptc == 'SBD':
         cr = []
         bit = []
         for v in n1.bit_dec(int(request.POST.get("p1")).bit_length()):
@@ -101,25 +101,25 @@ def calculation(request):
             bit.append(hex(v._EncryptedNumber__ciphertext).upper())
         CR = cr
         return JsonResponse({'cr': str(bit)})
-    elif ptc == 'And':
+    elif ptc == 'SAND':
         cr = n1 & n2
-    elif ptc == 'Or':
+    elif ptc == 'SBOR':
         cr = n1 | n2
-    elif ptc == 'Not':
+    elif ptc == 'SNOT':
         cr = n1.bit_not()
     elif ptc == 'Not-And':
         cr = n1 ^ n2
-    elif ptc == 'Equal':
+    elif ptc == 'SEQ':
         cr = n1 == n2
-    elif ptc == 'Not-Equal':
+    elif ptc == 'SNEQ':
         cr = n1 != n2
     elif ptc == 'Greater-Than':
         cr = n1 > n2
     elif ptc == 'Greater-Equal':
         cr = n1 >= n2
-    elif ptc == 'Less-Than':
+    elif ptc == 'SLESS':
         cr = n1 < n2
-    elif ptc == 'Less-Equal':
+    elif ptc == 'SLEQ':
         cr = n1 <= n2
     else:
 
