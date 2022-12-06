@@ -52,12 +52,12 @@
         </div>
         <div class="col-md-3 column">
             <label class="shadow">
-                <input id="p1" placeholder="Plaintext 1">
+                <input id="p1" placeholder="a">
             </label>
         </div>
         <div class="col-md-6 column">
             <label class="shadow" onclick=showText('c1')>
-                <input id="c1" placeholder="Ciphertext 1" disabled>
+                <input id="c1" placeholder="Input: Epk(a)" disabled>
             </label>
         </div>
     </div>
@@ -66,26 +66,19 @@
             <div class="dropdown">
                 <button type="button" class="btn btn-success shadow dropdown-toggle"
                         data-bs-toggle="dropdown" id="ptc">Protocol</button>
-                <ul class="dropdown-menu" style="height: 30rem;overflow-y: scroll;">
+                <ul id="#advanced" class="dropdown-menu" style="height: 30rem;overflow-y: scroll;">
                     <li><h5 class="dropdown-header">Protocol</h5></li>
-                    <li><a class="dropdown-item" onclick=dropDownShow('ptc',this.innerHTML)>SM</a></li>
-                    <li><a class="dropdown-item" onclick=dropDownShow('ptc',this.innerHTML)>SDC</a></li>
-                    <li><a class="dropdown-item" onclick=dropDownShow('ptc',this.innerHTML)>SMAX</a></li>
-                    <li><a class="dropdown-item" onclick=dropDownShow('ptc',this.innerHTML)>SMIN</a></li>
-{#                    <li><a class="dropdown-item" onclick=dropDownShow('ptc',this.innerHTML)>SEQ</a></li>#}
-                    <li><a class="dropdown-item" onclick=dropDownShow('ptc',this.innerHTML)>SEQ</a></li>
-{#                    <li><a class="dropdown-item" onclick=dropDownShow('ptc',this.innerHTML)>SNEQ</a></li>#}
-{#                    <li><a class="dropdown-item" onclick=dropDownShow('ptc',this.innerHTML)>Greater-Than</a></li>#}
-{#                    <li><a class="dropdown-item" onclick=dropDownShow('ptc',this.innerHTML)>Greater-Equal</a></li>#}
-                    <li><a class="dropdown-item" onclick=dropDownShow('ptc',this.innerHTML)>SLESS</a></li>
-                    <li><a class="dropdown-item" onclick=dropDownShow('ptc',this.innerHTML)>SLEQ</a></li>
-
-                    <li><a class="dropdown-item" onclick=dropDownShow('ptc',this.innerHTML)>SBD</a></li>
-                    <li><a class="dropdown-item" onclick=dropDownShow('ptc',this.innerHTML)>SAND</a></li>
-                    <li><a class="dropdown-item" onclick=dropDownShow('ptc',this.innerHTML)>SBOR</a></li>
-                    <li><a class="dropdown-item" onclick=dropDownShow('ptc',this.innerHTML)>SNOT</a></li>
-{#                    <li><a class="dropdown-item" onclick=dropDownShow('ptc',this.innerHTML)>Not-And</a></li>#}
-
+                    <li><a id="SM" class="dropdown-item" onclick=dropDownShow('ptc',this.innerHTML)>SM</a></li>
+                    <li><a id="SDC" class="dropdown-item" onclick=dropDownShow('ptc',this.innerHTML)>SDC</a></li>
+                    <li><a id="SMAX" class="dropdown-item" onclick=dropDownShow('ptc',this.innerHTML)>SMAX</a></li>
+                    <li><a id="SMIN" class="dropdown-item" onclick=dropDownShow('ptc',this.innerHTML)>SMIN</a></li>
+                    <li><a id="SEQ" class="dropdown-item" onclick=dropDownShow('ptc',this.innerHTML)>SEQ</a></li>
+                    <li><a id="SLESS" class="dropdown-item" onclick=dropDownShow('ptc',this.innerHTML)>SLESS</a></li>
+                    <li><a id="SLEQ" class="dropdown-item" onclick=dropDownShow('ptc',this.innerHTML)>SLEQ</a></li>
+                    <li><a id="SBD" class="dropdown-item" onclick=dropDownShow('ptc',this.innerHTML)>SBD</a></li>
+                    <li><a id="SAND" class="dropdown-item" onclick=dropDownShow('ptc',this.innerHTML)>SAND</a></li>
+                    <li><a id="SBOR" class="dropdown-item" onclick=dropDownShow('ptc',this.innerHTML)>SBOR</a></li>
+                    <li><a id="SNOT" class="dropdown-item" onclick=dropDownShow('ptc',this.innerHTML)>SNOT</a></li>
                     <li>
                         <hr class="dropdown-divider">
                     </li>
@@ -95,12 +88,12 @@
         </div>
         <div class="col-md-3 column">
             <label class="shadow">
-                <input id="p2" placeholder="Plaintext 2">
+                <input id="p2" placeholder="b">
             </label>
         </div>
         <div class="col-md-6 column">
             <label class="shadow" onclick=showText('c2')>
-                <input id="c2" placeholder="Ciphertext 2" disabled>
+                <input id="c2" placeholder="Input: Epk(b)" disabled>
             </label>
         </div>
     </div>
@@ -110,7 +103,7 @@
         </div>
         <div class="col-md-9 column">
             <label class="shadow" onclick=showText('cr')>
-                <input id="cr" placeholder="Ciphertext Result" disabled>
+                <input id="cr" placeholder="Output" disabled>
             </label>
         </div>
     </div>
@@ -120,23 +113,24 @@
         </div>
         <div class="col-md-9 column">
             <label class="shadow">
-                <input id="dr" placeholder="Decryption Result" disabled>
+                <input id="dr" placeholder="Dsk(Output)" disabled>
             </label>
         </div>
     </div>
     <div class="row clearfix">
         <div class="col-md-12 column">
-            <h4 class="text-center shadow">Encryption Number</h4>
+            <!-- <h4 class="text-center shadow">Encryption Number</h4>
             <textarea id="show" class="shadow"
                       style="width: 78.5rem;height: 17rem;resize: none;background-color: white;color: black"
                       placeholder="Click on ciphertext to show"
-                      disabled></textarea>
+                      disabled></textarea> -->
+            <h4 class="text-center shadow">Protocol Architecture</h4>     
+            <img id="img" src="../static/resource/fig1.svg" height="100%" width="100%" alt="..." >     
         </div>
     </div>
 </div>
 <script>
     $(document).ready(function () {
-      
     })
 </script>
 </body>
