@@ -1,5 +1,8 @@
 function dropDownShow(id, value) {
     document.getElementById(id).innerHTML = value + '\n';
+    let s ='../static/resource/'+value+'.jpg'
+    console.log(s)
+    $("#img").attr("src",s)
 }
 
 let KEY = "Click on ciphertext to show";
