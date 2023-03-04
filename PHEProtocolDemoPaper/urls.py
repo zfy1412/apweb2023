@@ -29,4 +29,5 @@ urlpatterns = [
     re_path('example/', views.example),
     re_path('views/', views.views),
     re_path('knn/',views.knn),
+    re_path('new/',views.newindex),
 ]

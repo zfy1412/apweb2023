@@ -30,6 +30,9 @@ def example(request):
 @csrf_exempt
 def views(request):
     return render(request, "views.html")
+@csrf_exempt
+def newindex(request):
+    return render(request, "newindex.html")
 
 @csrf_exempt
 def knn(request):

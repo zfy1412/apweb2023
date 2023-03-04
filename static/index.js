@@ -5,6 +5,10 @@ function dropDownShow(id, value) {
     $("#img").attr("src",s)
 }
 
+function dropDownShows(id, value) {
+    document.getElementById(id).innerHTML = value + '\n';
+}
+
 let KEY = "Click on ciphertext to show";
 
 function generateKeypair() {
