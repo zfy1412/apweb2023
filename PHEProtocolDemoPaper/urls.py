@@ -19,15 +19,18 @@ import app.views as views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-
+    path('index/', views.index),
+    path('example/', views.example),
+    path('views/', views.views),
+    path('knn/', views.knn),
+    path('newindex.html/', views.newindex),
+    path('newexample.html/', views.newexample),
+    path('Advance.html/', views.advance),
+    path('Basic.html/', views.basic),
     re_path(r'^dec', views.decryption),
     re_path(r'^cal$', views.calculation),
     re_path(r'^enc$', views.encryption),
     re_path(r'^gk$', views.generate_keypair),
-    re_path(r'^$', views.realindex),
-    re_path('index/', views.index),
-    re_path('example/', views.example),
-    re_path('views/', views.views),
-    re_path('knn/',views.knn),
-    re_path('new/',views.newindex),
+    re_path(r'^$', views.newindex),
+
 ]

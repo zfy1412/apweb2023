@@ -33,6 +33,15 @@ def views(request):
 @csrf_exempt
 def newindex(request):
     return render(request, "newindex.html")
+@csrf_exempt
+def advance(request):
+    return render(request, "Advance.html")
+@csrf_exempt
+def basic(request):
+    return render(request, "Basic.html")
+@csrf_exempt
+def newexample(request):
+    return render(request, "newExample.html")
 
 @csrf_exempt
 def knn(request):
